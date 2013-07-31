@@ -1,0 +1,167 @@
+* {outline:none;}
+
+body {
+	font: 11px verdana, arial;
+	color: #000;
+	background: #fff; margin: 0; padding:0;
+}
+
+p {
+	line-height: 1.5em;
+	margin: 8px 0px;
+}
+
+a, a:link, a:hover, a:visited {color: #00f;}
+a img {border: none;}
+
+.oculto, 
+.submit 
+{
+	display: none;
+}
+
+	
+h1 {
+	position: relative; 
+	color: #666; 
+	border-bottom: 1px solid #ddd;
+	font: bold 14pt "Century Gothic", arial, verdana;
+	margin: 0;
+	padding: 3px 0 0 0;
+}
+
+
+h2 {font: bold 12pt "Century Gothic", arial, verdana; color: #666; margin: 30px 0px 8px 0px;}
+h3 {font: bold 10pt "Century Gothic", arial, verdana; color: #666;}
+
+h2 a {font-size: 8pt;}
+h2 em {font: bold 9pt arial; color: #999; text-decoration: none;}
+
+h3 em {font: bold 9pt arial; color: #999; text-decoration: none;}
+
+/*
+a:link {text-decoration: underline; color: #039}
+a:visited {text-decoration: underline; color: #039}
+a:hover {text-decoration: underline; color: #666}
+*/
+
+
+
+
+/*___________________________________*/
+
+
+#tudo {
+	width: 960px;
+	margin: 10px auto;
+}
+
+
+	
+/*_____CONTEÚDO__________________________*/
+
+#central {
+	position:relative;
+	width: 960px;
+	margin: 0 auto;
+	height: auto; overflow: hidden;
+	padding:0;
+}
+
+#conteudo
+    {
+	position:relative; width: 780px;
+	float: right;
+	padding: 10px 0px 30px 10px;
+	background: #fff;
+	}
+
+	
+#conteudo a.linksemente:link {text-decoration: underline; color: #666;}
+#conteudo a.linksemente:visited {text-decoration: underline; color: #666}
+#conteudo a.linksemente:hover {text-decoration: underline; color: #666}
+.nomesemente {font: bold 10pt arial, verdana; color: #093 }
+
+
+.esmaecido {color: #666}
+
+#conteudo ul.lista {
+	margin: 10px 0;
+	padding: 0;
+	list-style: none;
+}
+	#conteudo ul.lista li {
+		line-height: 30px;
+	}
+	
+	
+	
+/*_____RODAPÉ__________________________*/
+
+#rodape
+    {
+	clear: both;
+	width: 960px;
+	height: 40px;
+	margin: 30px auto;
+	padding: 5px 0px;
+	border-top: 5px solid #eee;
+	text-align: right;
+	}
+
+#rodape a {font-weight: bold; color: #999; text-decoration: none;}
+#rodape a:hover {font-weight: bold; color: #000; text-decoration: none;}
+#rodape em {color: #c00; font-style: normal;}
+
+
+
+/*___ajuda____________________________*/
+
+.ajuda h2 {margin: 40px 0 10px;}
+.ajuda h3 {margin: 30px 0 10px;}
+.ajuda h4 {margin: 20px 0 10px;}
+.ajuda h4 {margin: 20px 0 10px;}
+
+.ajuda ul, .ajuda ol {
+	margin-left: 20px;
+}
+
+ul.indice {
+	padding-left: 0;
+}
+
+ul.indice, ul.indice ul {
+	list-style: none;
+}
+
+ul.indice li {
+	line-height: 1.5em;
+}
+
+ul.indice ul {
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+
+.ajuda .nav_lateral {
+	float: left;
+	margin: 0 0 20px 0;
+	width: 100%;
+}
+	.ajuda .nav_lateral a {
+		display: block; float: left;
+		margin: 0 5px 0 0;
+		padding: 1px 6px 2px;
+		background: #f5f5f5;
+		border: 1px solid #eee;
+		font-size: 14px;
+		text-decoration: none;
+	}
+		.ajuda .nav_lateral a:hover {
+			background: #e5e5e5;
+			border-color: #ccc;
+		}
+
+
+
+

@@ -1,0 +1,26 @@
+
+
+/*___upload___*/
+
+.upload_progresso {
+	float: left; margin: 0 5px 0 0;
+}
+	.upload_barra {
+		position: relative; 
+		display: inline-block; vertical-align:top;
+		width: 170px; height: 19px; 
+		border: 1px solid #ccc;
+	}
+		.upload_bg_barra {
+			position:absolute; top: 0; left:0;
+			z-index: 1;
+			width: 10px; height: 19px;
+			background: #99ff99;
+		}
+		.upload_nome_imagem {
+			position: absolute; top: 0; left: 0;
+			z-index: 2;
+			width: 164px; height: 15px; 
+			padding: 2px; overflow: hidden;
+		}
+	

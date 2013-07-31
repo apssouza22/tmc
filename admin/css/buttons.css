@@ -1,0 +1,147 @@
+
+
+/*___ícones padrão de edição_____*/
+
+
+#loading {
+	position:absolute;
+	top: 0; left: 0;
+	width: 16px; height: 16px; margin: 0; padding:1px;
+	z-index: 1000;
+}
+
+
+h1 span.botoes {
+	display:block; position: absolute;
+	right: 0; bottom: 0;
+	height: 28px;
+	font-family: arial; font-size: 12px; font-weight: normal;
+	color: #666; 
+	line-height: 35px;
+}
+	h1 span.botoes em {
+		color: #f00; font-style: normal; font-weight: bold; font-size: 13px;
+	}
+
+
+
+
+.bt_ico {
+	display: inline-block; vertical-align:text-bottom;
+	width: 26px; height: 26px;
+	margin: 0 2px; padding: 0;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+	.bt_ico em {display: none;}
+	.bt_ico:hover {background-position: -30px 0;}
+	
+	.ico_view, 
+	.ico_view_on, 
+	.ico_view_off
+	{
+		background-image:url(../imagens/icones/ico_view.png);
+	}
+	
+	.ico_edit, 
+	.ico_edit_on, 
+	.ico_edit_off
+	{
+		background-image:url(../imagens/icones/ico_edit.png);
+	}
+	
+	.ico_del, 
+	.ico_del_ajax, 
+	.ico_del_on, 
+	.ico_del_off
+	{
+		background-image:url(../imagens/icones/ico_del.png);
+	}
+
+	.ico_olho_on_on, 
+	.ico_olho_on_off
+	{
+		background-image:url(../imagens/icones/ico_olho_on.png);
+	}
+
+	.ico_olho_off_on, 
+	.ico_olho_off_off
+	{
+		background-image:url(../imagens/icones/ico_olho_off.png);
+	}
+
+	.ico_destaque_on_on, 
+	.ico_destaque_on_off
+	{
+		background-image:url(../imagens/icones/ico_destaque_on.png);
+	}
+
+	.ico_destaque_off_on, 
+	.ico_destaque_off_off
+	{
+		background-image:url(../imagens/icones/ico_destaque_off.png);
+	}
+
+	.ico_cancel_on, 
+	.ico_cancel_off, 
+	.ico_exc_up_on, 
+	.ico_exc_up_off 
+	{
+		background-image:url(../imagens/icones/ico_cancel.png);
+	}
+
+	.ico_folder_on, 
+	.ico_folder_off 
+	{
+		background-image:url(../imagens/icones/ico_folder.png);
+	}
+
+	.ico_list,
+	.ico_list_on,
+	.ico_list_off {
+		background-image:url(../imagens/icones/ico_list.png);
+	}
+
+	.ico_mais,
+	.ico_mais_on,
+	.ico_mais_off {
+		background-image:url(../imagens/icones/ico_mais.png);
+	}
+
+
+	.bt_ico_off, 
+	.bt_ico_off:hover, 
+	.ico_view_off,
+	.ico_view_off:hover
+	{
+		cursor: default; 
+		background-position: -60px 0;
+	}
+
+	.ico_olho_off,
+	.ico_olho_off:hover
+	{
+		cursor: default; 
+	}
+
+
+	/*--- ARRUMAR ---*/
+	.ico_list_on {background-image:url(../imagens/botao_listar_on.gif);}
+	.ico_mais_on {background-image:url(../imagens/botao_mais.gif);}
+
+	.ico_ficha_on {background-image:url(../imagens/icone_ficha_on.gif);}
+	.ico_ficha_off {background-image:url(../imagens/icone_ficha_off.gif);}
+	
+
+	.ico_seta_top_on {background-image:url(../imagens/botao_seta_top.gif);}
+	.ico_seta_top_off {background-image:url(../imagens/botao_seta_top_off.gif);}
+	.ico_seta_up_on {background-image:url(../imagens/botao_seta_up.gif);}
+	.ico_seta_up_off {background-image:url(../imagens/botao_seta_up_off.gif);}
+	.ico_seta_down_on {background-image:url(../imagens/botao_seta_down.gif);}
+	.ico_seta_down_off {background-image:url(../imagens/botao_seta_down_off.gif);}
+	.ico_seta_bottom_on {background-image:url(../imagens/botao_seta_bottom.gif);}
+	.ico_seta_bottom_off {background-image:url(../imagens/botao_seta_bottom_off.gif);}
+
+	/*--- end ARRUMAR ---*/
+	
+

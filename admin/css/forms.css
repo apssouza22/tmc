@@ -1,0 +1,249 @@
+/*___________FORMULÁRIO_______________*/
+
+.rotulo {font: 8pt arial; color: #888; margin-bottom: 0px;}
+.rotulo1 {font: 8pt arial; color: #666; margin: 2px;}
+.rotulo2 {font: 8pt arial; color: #999; margin: 2px;}
+.subrotulo {font: 8pt arial; color: #999}
+.erro {font: bold 8pt arial; color: #f00; text-indent: 0; padding: 5px; background: #FFFFC4; border: 1px solid #f00;}
+.erro strong {color: #000;}
+.sucesso {font: bold 8pt arial; color: #039; text-indent: 0; padding: 5px; background: #fafafa; border: 1px solid #eee;}
+.contador {font: 8pt arial; color: #aaa;}
+
+
+
+
+/*___________BOX________________________*/
+div.caixa {
+	position: relative; 
+	border: 1px solid; border-color: #ddd #aaa #aaa #ddd; 
+	margin: 30px 0 15px 0; padding: 40px 0 10px 15px; _width:550px; _padding-left:10px; 
+	height:auto; overflow:hidden;
+	-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; 
+}
+
+	div .baixa {min-height: 40px !important; _height:40px !important;}
+div.caixa h3 {background: #eee; border-bottom: 1px solid #ccc; margin: -40px 0px 10px -15px; _margin: -40px -15px 10px -15px; padding: 5px 15px; font: bold 9pt arial; color: #666;}
+div.caixa h3 a {display: block; position:absolute; right: 20; top: 5px; font-size:8pt;}
+div.caixa h3 em {font: 8pt arial;}
+div.caixa h4 {font: bold 9pt arial; color: #666; margin-top: 30px; margin-bottom: 5px;}
+
+div.field {
+	float: left; position:relative; 
+	width: 370px; height: 50px; 
+	margin: 0 10px 5px 0;
+	overflow: hidden;
+	/*background: #900;*/
+	font: 13px arial;
+}
+	div.alto {height: 105px !important;}
+	div.fck {width: 740px !important; margin-right: 0; height: 250px !important;}
+	div.baixo {height: 25px !important;}
+	
+	div.third {width: 170px;}
+	
+input, select, textarea 
+	{
+	font: 13px arial; color: #000; 
+	border: 1px solid; border-color: #999 #ddd #ddd #999; 
+	}
+	div.field input, div.caixa .field textarea {width: 360px;}
+	div.field input {
+		padding: 3px 5px; margin: 0; 
+		-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+	}
+	div.field select {
+		display: block; float: left;
+		padding: 2px 0 2px 2px; 
+		-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; 
+	}
+	div.field textarea {
+		padding: 3px 5px; 
+		height: 80px; 
+		-moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; 
+	}
+	div.fck textarea {height: 230px; width: 740px !important;}
+
+div.field label {display: block; clear: right; font: 8pt arial; color: #666; margin-bottom: 3px; height: 14px;}
+	div.field label em {color: #999;}
+	div.field label strong em, .p_obr strong em {color: #f00; font-style: normal; font-size: 13px;}
+
+
+div.field label span.contador {
+	position: absolute; right: 10px; top: 3px;
+	font-size: 11px;
+	color: #ccc; font-weight: normal;
+}
+	div.field label span.contador_full {color: #f00; font-weight: bold;}
+
+.p_obr {color: #666; font-family: arial;}
+
+.campo_obr_foco {border-color: #f00;}
+
+div.full {
+	width: 750px !important;
+}
+div.full input, div.full textarea {width: 740px !important; margin-right: 0;}
+div.half {width: 180px;}
+div.half input, div.half textarea {width: 170px !important;}
+
+div.third, div.third input, div.third select, div.third textarea {width: 175px;}
+div.quarter, div.quarter input, div.quarter select, div.quarter textarea {width: 90px; margin-right: 5px;}
+div.auto input, div.auto select, div.auto textarea {width: auto !important;}
+
+.input_2 {width: 24px !important;}
+.input_3 {width: 30px !important;}
+.input_4 {width: 40px !important;}
+.input_5 {width: 45px !important;}
+.input_8 {width: 70px !important;}
+
+
+.field .texto_chamada {border: 1px solid #ccc; width: 340px; padding: 5px; height: 55px; overflow:auto;}
+.full .texto_chamada, .fck .texto_chamada {border: 1px solid #ccc; padding: 5px; width: 728px; height: 215px; overflow:auto;}
+.alto .texto_chamada {height: 75px;}
+	.field .texto_chamada h1, 
+	.field .texto_chamada h2,
+	.field .texto_chamada_fck h1, 
+	.field .texto_chamada_fck h2 {
+		font-size: 14px; color: #005299;
+	}
+	.field .texto_chamada ul {
+		padding: 0 0 0 20px; 
+	}
+
+.esmaecido {color: #bbb;}
+
+ul.lista_simples {margin:0 0 0 15px; padding:0;}
+ul.lista_simples li {margin: 8px 0;}
+
+
+
+/*___PAGINAÇÃO_________________*/
+div.pages {position: relative; margin: 20px 0px; width: 300px; height: 60px; background: #fafafa; border: 1px solid #eee; color: #666;}
+span.results {display: block; position: absolute; left: 25px; top: 5px;}
+span.bts {display: block; position: absolute; left: 25px; top: 35px;}
+	
+	
+
+
+
+
+/*___botões______*/
+
+.bt_padrao {
+	padding: .4em 1em .4em 30px;
+	text-decoration: none;
+	position: relative; 
+	font-weight: bold;
+	color: #666 !important; 
+	margin: 5px 5px 0 0;
+}
+	.bt_padrao span.ui-icon {
+		position: absolute;		
+		margin: -8px 5px 0 0;
+		left: 5px; top: 50%;
+	}
+
+#conteudo .controles {
+	margin: 0 0 0 15px; padding: 5px 0 0 0;
+	font: 8pt verdana;
+}
+
+
+
+/*___PERFIS DE TABLÓIDES___*/
+
+#perfil_tabloide {
+	position: absolute;
+	left: 200px; top: 3px;
+	width: 300px; height: 30px;
+}
+	#perfil_tabloide label {
+		display: inline-block; float: left;
+		font-size: 9px; color: #666; text-align: right;
+		margin: 0 3px 0 0;
+		padding-top: 3px;
+	}
+	#perfil_tabloide select {
+		width: 150px;
+		font-size: 10px;
+	}
+
+
+
+/*___LOGIN________________________*/
+
+
+#box_login {
+	position:absolute; left: 50%; top: 50%; 
+	width: 300px; height: 400px; 
+	margin-top: -200px; margin-left: -150px;
+}
+
+	#login_logo {
+		width: 300px; height: 160px; 
+		margin: 0 auto 10px auto; padding:0; 
+		background: url(../imagens/logo.gif) bottom center no-repeat;
+	}
+
+	#login_conteiner {
+		position: relative;
+		width: 180px; height: 120px;
+		border: 1px solid #ddd; 
+		margin: 0 auto 10px auto; padding: 20px 20px 20px 20px;
+	}
+		#login_conteiner label, #esqueci_conteiner label {
+			display: block; clear: left;
+			font: 8pt arial; color: #888;
+		}
+		#login_conteiner input  {
+			font: 13px arial;
+			width: 175px; margin-bottom: 10px; padding: 3px;
+		}
+		#login_conteiner .bt_padrao {
+			position: absolute;
+			bottom: 20px; left: 20px;
+		}
+	
+	#imagem_entrar, #imagem_reenviar {
+		width: auto !important; height: auto !important;
+		display: block;
+		margin: 0 auto;
+		border: none;
+	}
+
+
+
+#box_esqueci {
+	 position:absolute; left: 50%; top: 50%; 
+	 width: 240px; height: 300px; 
+	 margin-top: -150px; margin-left: -120px;
+}
+	#esqueci_logo {
+		width: 240px; height: 120px; 
+		margin: 0 0 10px 0; padding:0; 
+		background:url(../imagens/logo.gif) bottom center no-repeat;
+	}
+	#box_esqueci #box_erro {
+		top: 100px; left: 192px; 
+	}
+
+	#esqueci_conteiner {
+		width: 160px; height: 80px; 
+		border: 1px solid #ddd; 
+		margin: 0 auto 10px auto; 
+		padding: 20px 20px 0 20px;
+	}
+	#esqueci_conteiner input {
+		width: 160px; margin-bottom: 10px;
+	}
+	#esqueci_conteiner p {
+		margin: 10px 0; text-align:center;
+	}
+
+/*________________________________*/
+
+
+
+
+input.radio, input.imagem, input.checkbox, .half input.checkbox {border:0 !important; width:auto !important; height:auto !important;}
+input.checkbox {vertical-align:middle;}

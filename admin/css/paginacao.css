@@ -1,0 +1,47 @@
+
+/*___PAGINAÇÃO_________________*/
+div.pages {position: relative; margin: 20px 0px; width: 300px; height: 60px; background: #fafafa; border: 1px solid #eee; color: #666;}
+span.results {display: block; position: absolute; left: 25px; top: 5px;}
+span.bts {display: block; position: absolute; left: 25px; top: 35px;}
+	
+	
+
+input.radio, input.imagem, input.checkbox {border:0 !important; width:auto !important; height:auto !important;}
+input.checkbox {vertical-align:middle;}
+
+
+/*___paginação___*/
+
+.paginacao_geral {
+	padding: 5px; 
+	/*background: #fafafa; */
+	/*border: 1px solid #ddd; */
+	color: #999; margin: 10px 0;
+}
+
+	.paginacao_geral a {
+		display: inline-block; 
+		padding: 2px 5px;
+		margin: 0 3px;
+		color: #999; 
+		text-decoration: none; 
+		border: 1px solid #ddd; 
+	}
+		.paginacao_geral a:hover {background: #666; color: #fff;}
+		.paginacao_geral a.off {color: #999; cursor: default; border: 1px solid #999; background: #fff;}
+	
+	.paginacao_geral .bt_seta_esq {
+		display: inline-block; width: 20px; height: 10px; margin: 0 10px 0 0;
+		background: url(../imagens/setas_paginacao_esq.gif) center bottom no-repeat;
+		vertical-align: bottom;
+	}
+
+	.paginacao_geral .bt_seta_dir {
+		display: inline-block; width: 20px; height: 10px; margin: 0 0 0 10px;
+		background: url(../imagens/setas_paginacao_dir.gif) center bottom no-repeat;
+		vertical-align:bottom;
+	}
+
+
+
+
