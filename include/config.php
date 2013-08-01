@@ -11,7 +11,8 @@ if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !
 	define('DB_PORTA', '');
 
 	define('PATH_SERV', $_SERVER['DOCUMENT_ROOT']);
-	$sitePath = '/jobs/tmc/';
+	$sitePath = '/Meusprojetos/tmc/';
+	
 } else {
 	define('DB_NOME', 'tmc');
 	define('DB_SENHA', '');
@@ -19,21 +20,13 @@ if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !
 	define('DB_HOST', 'localhost');
 	define('DB_PORTA', '');
 	
-		if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'salvesocial') !== false) {
-			define('PATH_SERV', $_SERVER['DOCUMENT_ROOT']);
-			$sitePath = '/kimberly/intimus/garota_verao/';
-		}
-
-		//comand line
-		if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HOSTNAME'], 'salvesocial') !== false) {
-			define('PATH_SERV', '/var/www/vhosts/salvesocial.com/httpdocs/kimberly/cha-de-bebe/');
-		}
+	
 }
 
 //testes com php UNIt
 if (!defined('PATH_SERV')) {
 	define('PATH_SERV', '/home/apssouza/Projetos/');
-	$sitePath = '/jobs/tmc/';
+	$sitePath = '/Meusprojetos/tmc/';
 }
 
 $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';

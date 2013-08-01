@@ -8,32 +8,35 @@ $classePagina = 'Cliente';
 
 $objClassePg = new $classePagina($_GET['id']);
 
+
 if (!$objClassePg->id) {
 	header('Location: ' . constant("{$classePagina}::PG_LISTAR"));
 	exit;
 }
 
+$oMatriz = $objClassePg->getMatriz();
+$aFilial = $objClassePg->getFiliais();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/html1-transitional.dtd>
 <html>
 	<head>
-<?php include(DIR_CMS_ROOT . 'inc/inc_header.php'); ?>
+		<?php include(DIR_CMS_ROOT . 'inc/inc_header.php'); ?>
 	</head>
 
 	<body>
 		<?php include(DIR_CMS_ROOT . 'inc/inc_topo.php'); ?>
 		<div id="central">
-		<?php include(DIR_CMS_ROOT . 'inc/inc_menu.php'); ?>
+			<?php include(DIR_CMS_ROOT . 'inc/inc_menu.php'); ?>
 			<div id="conteudo">
 				<?
 				$classe_visibilidade = $objClassePg->status == 1 ? 'ico_olho_on_on' : 'ico_olho_off_on';
-				$bt_olho = '<a href="'.DIR_HTM_ROOT.'ajax.php" onclick="return toggle_exibir(\''.$classePagina.'\', ' . $objClassePg->id . ', this)" class="bt_ico ico_olho ' . $classe_visibilidade . '" title="status"><em>visibilidade</em></a>';
-				$bt_view = '<a href="'.  constant("{$classePagina}::PG_LISTAR") . '" class="bt_ico ico_list" title="detalhes"><em>detalhes</em></a>';
+				$bt_olho = '<a href="' . DIR_HTM_ROOT . 'ajax.php" onclick="return toggle_exibir(\'' . $classePagina . '\', ' . $objClassePg->id . ', this)" class="bt_ico ico_olho ' . $classe_visibilidade . '" title="status"><em>visibilidade</em></a>';
+				$bt_view = '<a href="' . constant("{$classePagina}::PG_LISTAR") . '" class="bt_ico ico_list" title="detalhes"><em>detalhes</em></a>';
 				$bt_edit = '<a href="form.php?id=' . $objClassePg->id . '" class="bt_ico ico_edit" title="editar"><em>editar</em></a>';
 				$bt_action = $bt_olho . $bt_view . $bt_edit;
 				?>
 
-				<h1>Detalhes do chamado<span class="botoes"><?php echo $bt_action; ?></span></h1>
+				<h1>Detalhes do Cliente<span class="botoes"><?php echo $bt_action; ?></span></h1>
 
 
 				<div class="caixa">
@@ -46,48 +49,144 @@ if (!$objClassePg->id) {
 
 					<div class="field ">
 						<label><span>Responsável:</span></label>
-						<?php echo $objClassePg->nome_responsavel ?>
+						<?php echo $objClassePg->nome_gerente ?>
 					</div>
 					<div class="field ">
 						<label><span>E-mail:</span></label>
-						<?php echo $objClassePg->email?>
+						<?php echo $objClassePg->email ?>
 					</div>
 
 					<div class="field half">
 						<label><span>Telefone:</span></label>
 						<?php echo $objClassePg->telefone; ?>
 					</div>
-					
-					<div class="field half">
-						<label><span>CEP:</span></label>
-						<?php echo $objClassePg->cep; ?>
-					</div>
-
-					<div class="field">
-						<label><span>Endereço:</span></label>
-						<?php echo $objClassePg->endereco; ?>
-					</div>
-
-					<div class="field half">
-						<label><span>Bairro: </span></label>
-						<?php echo $objClassePg->bairro; ?>
-					</div>
-
-					<div class="field half">
-						<label><span>Cidade:</span></label>
-						<?php echo $objClassePg->cidade; ?>
-					</div>
-
-					<div class="field half">
-						<label><span>Status:</span></label>
-						<?php echo $objClassePg->estado;
-						?>
-					</div>
 
 				</div>
+				<? if ($oMatriz) { ?>
+					<div class="caixa">
+						<h3>Matriz</h3>
+						<div class="field ">
+							<label><span>Responsável:</span></label>
+							<?php echo $oMatriz->nome_responsavel ?>
+						</div>
+						<div class="field ">
+							<label><span>E-mail:</span></label>
+							<?php echo $oMatriz->email ?>
+						</div>
+
+						<div class="field half">
+							<label><span>Telefone:</span></label>
+							<?php echo $oMatriz->telefone; ?>
+						</div>
+
+						<div class="field half">
+							<label><span>CEP:</span></label>
+							<?php echo $oMatriz->cep; ?>
+						</div>
+
+						<div class="field">
+							<label><span>Endereço:</span></label>
+							<?php echo $oMatriz->endereco; ?>
+						</div>
+
+						<div class="field half">
+							<label><span>Bairro: </span></label>
+							<?php echo $oMatriz->bairro; ?>
+						</div>
+
+						<div class="field half">
+							<label><span>Cidade:</span></label>
+							<?php echo $oMatriz->cidade; ?>
+						</div>
+
+						<div class="field half">
+							<label><span>Estado:</span></label>
+							<?php echo $oMatriz->estado;
+							?>
+						</div>
+						<div class="field half">
+							<label><span>Velocidade lan-to-lan:</span></label>
+							<?php echo $oMatriz->velocidadelan;
+							?>
+						</div>
+						<div class="field half">
+							<label><span>Velocidade porta ip:</span></label>
+							<?php echo $oMatriz->velocidadeip;
+							?>
+						</div>
+
+					</div>
+
+					<?
+				}
+
+				if ($aFilial) {
+					foreach ($aFilial as $filial) {
+						?>
+						<div class="caixa">
+							<h3>Dados da unidade</h3>
+
+							<div class="field ">
+								<label><span>Unidade:</span></label>
+								<?php echo $filial->nome; ?>
+							</div>
+
+							<div class="field ">
+								<label><span>Responsável:</span></label>
+								<?php echo $filial->nome_responsavel ?>
+							</div>
+							<div class="field ">
+								<label><span>E-mail:</span></label>
+								<?php echo $filial->email ?>
+							</div>
+
+							<div class="field half">
+								<label><span>Telefone:</span></label>
+								<?php echo $filial->telefone; ?>
+							</div>
+
+							<div class="field half">
+								<label><span>CEP:</span></label>
+								<?php echo $filial->cep; ?>
+							</div>
+
+							<div class="field">
+								<label><span>Endereço:</span></label>
+								<?php echo $filial->endereco; ?>
+							</div>
+
+							<div class="field half">
+								<label><span>Bairro: </span></label>
+								<?php echo $filial->bairro; ?>
+							</div>
+
+							<div class="field half">
+								<label><span>Cidade:</span></label>
+								<?php echo $filial->cidade; ?>
+							</div>
+
+							<div class="field half">
+								<label><span>Estado:</span></label>
+								<?php echo $filial->estado;
+								?>
+							</div>
+							<div class="field half">
+								<label><span>Velocidade lan-to-lan:</span></label>
+								<?php echo $filial->velocidadelan;
+								?>
+							</div>
+							<div class="field half">
+								<label><span>Velocidade porta ip:</span></label>
+								<?php echo $filial->velocidadeip;
+								?>
+							</div>
+
+						</div>
+					<? } ?>
+				<? } ?>
 
 			</div>
 		</div>
-<?php include(DIR_CMS_ROOT . 'inc/inc_rodape.php'); ?>
+		<?php include(DIR_CMS_ROOT . 'inc/inc_rodape.php'); ?>
 	</body>
 </html>

@@ -42,7 +42,7 @@ class DB
 			}
 			$stmte->execute();
 		} catch (PDOException $e) {
-			if(self::$debug){
+			if(self::$debug || true){
 				echo $e->getMessage();
 				echo '<br>';
 				echo $query;

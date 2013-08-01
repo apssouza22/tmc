@@ -68,7 +68,7 @@ else
 			<td><?php echo $bt_action;?></td>
 			<td class="quando"><?php echo $itemLista->empresa;?></td>
 			<td>
-				<?php echo $itemLista->nome_responsavel;?>
+				<?php echo $itemLista->nome_gerente;?>
 			</td>
 			<td>
 				<?php echo $itemLista->telefone;?>

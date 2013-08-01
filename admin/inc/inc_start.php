@@ -13,7 +13,7 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTT
 	define('CMS_DB_HOST', 'localhost');
 	define('CMS_DB_PORTA', '');
 	
-	$cmsPath = '/jobs/tmc/admin/'; // raíz do CMS
+	$cmsPath = '/Meusprojetos/tmc/admin/'; // raíz do CMS
 } else {
 	define('CMS_DB_NOME', 'tmc');
 	define('CMS_DB_SENHA', 'usersalve');
@@ -21,7 +21,7 @@ if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTT
 	define('CMS_DB_HOST', 'localhost');
 	define('CMS_DB_PORTA', '');
 	
-	$cmsPath = '/jobs/tmc/admin/'; // raíz do CMS
+	$cmsPath = '/Meusprojetos/tmc/admin/'; // raíz do CMS
 }
 
 $host = $_SERVER['HTTP_HOST'] . '/';
