@@ -180,6 +180,14 @@ if ($_POST) {
 					<input type="checkbox" name="ismatriz[]" value="1" ></input>
 				</div>
 				
+				<div class="field half">
+					<label><span>Parceiros?:</span> <strong><em>*</em></strong></label>
+					<select name="parceiro_id">
+						<option value="1">parceiro nome</option>
+						<option value="1">outro parceiro</option>
+					</select>
+				</div>
+				
 			</div>
 			<div class="field full controles">
 				<a  class="bt_padrao ui-state-default ui-corner-all js-addNovaUnidade"><span class="ui-icon ui-icon-disk"></span>Nova unidade</a>

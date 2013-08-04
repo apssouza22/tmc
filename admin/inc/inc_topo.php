@@ -116,7 +116,7 @@ $pasta = Authenticate::this_folder_name();
 				?>
 				<li>Técnicos
 					<ul>
-						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>tecnico/inserir.php">Inserir</a></li>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>tecnico/form.php">Inserir</a></li>
 						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>tecnico/listar.php">Listar</a></li>
 					</ul>
 				</li>

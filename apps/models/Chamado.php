@@ -78,6 +78,10 @@ class Chamado extends Model
 	public function getCliente(){
 		return new Cliente($this->cliente_id);
 	}
+	
+	public function  getTecnico(){
+		return new Tecnico($this->tecnico_id);
+	}
 
 	public function changeStatus()
 	{

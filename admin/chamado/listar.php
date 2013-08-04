@@ -66,8 +66,17 @@ else
 		$bt_edit = '<a href="chamado.php?id=' . $itemLista->id . '" class="bt_ico ico_edit" title="editar"><em>editar</em></a>';
 		$bt_olho = $itemLista->status==2 ? $bt_edit : $bt_olho ;
 		$bt_action = $bt_olho . $bt_view . $bt_edit;
+		
+		if(time() > strtotime($itemLista->prazoentrega)){
+			$class_status = 'red';
+		}
+		
+		if(time() + 3600  > strtotime($itemLista->prazoentrega)){
+			$class_status = 'yellow';
+		}
+		
 		?>
-		<tr>
+		<tr class="<?=$class_status?>" >
 			<td><?php echo $bt_action;?></td>
 			<td class="quando"><em><?php echo $itemLista->dataabertura;?></em> <?php echo date('d/m/Y H:i:s', strtotime($itemLista->dataabertura));?></td>
 			<td>

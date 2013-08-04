@@ -18,6 +18,11 @@ if ($_REQUEST['id']) {
 $objClassePg = new $classePagina($id);
 
 if ($_POST) {
+	$dateTime = new DateTime();
+	$dateInterval = new DateInterval('P0D');
+	$dateInterval->h =$_POST['sla'];
+	$_POST['prazoentrega'] = $dateTime->add($dateInterval )->format('Y-m-d H:i:s');
+	$_POST['sla'] = null;
 	$objClassePg->store($_POST);
 	header('Location: ' . constant("{$classePagina}::PG_DETALHE") . '?id=' . $id);
 	exit;
@@ -64,6 +69,32 @@ if ($_POST) {
 								}
 								?>
 							</select>
+						</div>
+						<div class="field half">
+							<label><span>Técnico:</span> <strong><em>*</em></strong></label>
+							<select class="obr" name="tecnico_id" nomecampo="Técnico">
+								<option value=""></option>
+								<?
+								$oTec = new Tecnico();
+								$aTec = $oTec->getAll();
+								foreach ($aTec as $value) {
+									$selected = $objClassePg->getTecnico()->id == $value->id ?
+											'selected="selected"':'';
+									echo "<option value='{$value->id}' $selected >{$value->nome}</option>";
+								}
+								?>
+							</select>
+						</div>
+						<div class="field half">
+							<label><span>SLA do chamado</span> <strong><em>*</em></strong><span class="contador">Em horas</span></label>
+							<?php 
+							$date1 = new \DateTime($objClassePg->dataabertura);
+							$date2 = new \DateTime($objClassePg->prazoentrega);
+							$diff = $date1->diff($date2);
+							$horas = $diff->d ? $diff->d * 24 : 0;412177083073
+							$horas += $diff->h;
+							?>
+							<input type="text" name="sla" class="obr number" value="<?=$horas?>" maxlength="3"/>
 						</div>
 
 						<div class="field full alto">

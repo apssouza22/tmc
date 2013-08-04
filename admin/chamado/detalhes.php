@@ -45,6 +45,11 @@ $cliente = $objClassePg->getCliente();
 						<?php echo $cliente->empresa; ?>
 					</div>
 
+					<div class="field ">
+						<label><span>Prazo:</span></label>
+						<?php echo date('d/m/Y H:i:s', strtotime($objClassePg->prazoentrega)); ?>
+					</div>
+
 					<div class="field alto">
 						<label for="descricao"><span>Descrição:</span></label>
 						<?php echo htmlspecialchars_decode($objClassePg->descricao); ?>
@@ -90,7 +95,7 @@ $cliente = $objClassePg->getCliente();
 					<h3>Dados do cliente </h3>
 					<div class="field half">
 						<label><span>Nome do responsável:</span></label>
-						<?php echo $cliente->nome_responsavel; ?>
+						<?php echo $cliente->nome_gerente; ?>
 					</div>
 
 					<div class="field half">
@@ -104,8 +109,8 @@ $cliente = $objClassePg->getCliente();
 					</div>
 
 					<div class="field half">
-						<label><span>Endereço:</span></label>
-						<?php echo $cliente->endereco; ?>
+						<label><span>Detalhes:</span></label>
+						<a href="../cliente/detalhes.php?id=<?=$cliente->id?>">aqui</a>
 					</div>
 				</div>
 
