@@ -17,7 +17,7 @@ switch ($_GET['filtro']) {
 $objeto = new $classePagina();
 $filter = new Filter();
 $filter->orderBy('datacadastro DESC');
-$filter->where($sqlWhere);
+$filter->where($sqlWhere)->limit(1000);
 $lista = $objeto->getAllCompleto($filter);
 
 ?>
@@ -52,6 +52,8 @@ else
 		<tr>
 			<th width="100">&nbsp;</th>
 			<th>Data de Abertura</th>
+			<th>Data limite</th>
+			<th>Técnico</th>
 			<th>Cliente</th>
 			<th>Descrição</th>
 		</tr>
@@ -67,18 +69,25 @@ else
 		$bt_olho = $itemLista->status==2 ? $bt_edit : $bt_olho ;
 		$bt_action = $bt_olho . $bt_view . $bt_edit;
 		
-		if(time() > strtotime($itemLista->prazoentrega)){
-			$class_status = 'red';
-		}
+		
+		$class_status = '';
 		
 		if(time() + 3600  > strtotime($itemLista->prazoentrega)){
 			$class_status = 'yellow';
+		}
+		
+		if(time() > strtotime($itemLista->prazoentrega)){
+			$class_status = 'red';
 		}
 		
 		?>
 		<tr class="<?=$class_status?>" >
 			<td><?php echo $bt_action;?></td>
 			<td class="quando"><em><?php echo $itemLista->dataabertura;?></em> <?php echo date('d/m/Y H:i:s', strtotime($itemLista->dataabertura));?></td>
+			<td class="quando"><?php echo date('d/m/Y H:i:s', strtotime($itemLista->prazoentrega));?></td>
+			<td>
+				<?php echo $itemLista->tecnico_id ? $itemLista->getTecnico()->nome : 'Indefinido';?>
+			</td>
 			<td>
 				<?php echo $itemLista->empresa;?>
 			</td>

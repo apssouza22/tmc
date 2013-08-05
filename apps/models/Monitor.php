@@ -9,6 +9,7 @@ class Monitor extends Model
 {
 
 	const TB_NAME = 'radio';
+	private $allEqFora;
 
 	public function ping($ip)
 	{
@@ -41,9 +42,11 @@ class Monitor extends Model
 	}
 	
 	public  function estaFora($id){
-		$oQueda = new Queda();
-		$allEqFora = $oQueda->getEquipamentosFora();
-		return in_array($id, $allEqFora);
+		if(!$this->allEqFora){
+			$oQueda = new Queda();
+			$this->allEqFora= $oQueda->getEquipamentosFora();
+		}
+		return in_array($id, $this->allEqFora);
 	}
 	
 	private function registrarQueda($eq, $idChamado){

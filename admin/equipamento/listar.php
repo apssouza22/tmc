@@ -45,6 +45,8 @@ else
 	</thead>
 	<tbody>
 	<?php 
+	$oQueda = new Queda();
+	$allEqFora= $oQueda->getEquipamentosFora();
 	foreach ($lista as $itemLista)
 	{
 		$classe_visibilidade = $itemLista->status==1 ? 'ico_olho_on_on' : 'ico_olho_off_on';
@@ -52,8 +54,9 @@ else
 		$bt_edit = '<a href="form.php?id=' . $itemLista->id . '" class="bt_ico ico_edit" title="editar"><em>editar</em></a>';
 		$bt_excluir = '<a title="excluir" class=" bt_ico ico_del" href="'. DIR_CMS_HTM_ROOT .'excluir.php?id='.$itemLista->id.'&amp;classe=Equipamento"><em>excluir</em></a>';
 		$bt_action = $bt_olho  . $bt_edit . $bt_excluir;
+		$class_status = in_array($itemLista->id, $allEqFora) ? 'red' : '';
 		?>
-		<tr>
+		<tr class="<?=$class_status?>">
 			<td><?php echo $bt_action;?></td>
 			<td class="quando"> <?php echo $itemLista->getCliente()->empresa?></td>
 			<td>

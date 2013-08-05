@@ -91,7 +91,7 @@ if ($_POST) {
 							$date1 = new \DateTime($objClassePg->dataabertura);
 							$date2 = new \DateTime($objClassePg->prazoentrega);
 							$diff = $date1->diff($date2);
-							$horas = $diff->d ? $diff->d * 24 : 0;412177083073
+							$horas = $diff->d ? $diff->d * 24 : 0;
 							$horas += $diff->h;
 							?>
 							<input type="text" name="sla" class="obr number" value="<?=$horas?>" maxlength="3"/>

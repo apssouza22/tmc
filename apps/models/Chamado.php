@@ -23,9 +23,16 @@ class Chamado extends Model
 
 	public function abrirAutomatico($eq)
 	{
+		$dateTime = new DateTime();
+		$dateInterval = new DateInterval('P0D');
+		$dateInterval->h = 1;
+		$prazoentrega = $dateTime->add($dateInterval)->format('Y-m-d H:i:s');
+		
 		return $this->insert(array(
-					'cliente_id' => $eq->cliente_id,
-					'descricao' => 'Chamado aberto automaticamente por queda de equipamentos <br /> Eq. '.$eq->descricao.' <br> IP: '.$eq->ip,
+		'tecnico_id' => 0,
+		'prazoentrega' => $prazoentrega,
+		'cliente_id' => $eq->cliente_id,
+		'descricao' => 'Chamado aberto automaticamente por queda de equipamentos  Eq. '.$eq->descricao.'  IP: '.$eq->ip,
 		));
 	}
 
@@ -57,7 +64,7 @@ class Chamado extends Model
 	private function getChamadoByEquip($id)
 	{
 		$filter = new Filter;
-		$filter->where('equip_id =' . $id .' AND status = 1');
+		$filter->where('equip_id =' . $id . ' AND status = 1');
 		$queda = new Queda;
 		$aQuedas = $queda->getAll($filter);
 		if ($aQuedas) {
@@ -74,12 +81,14 @@ class Chamado extends Model
 						->setFilter($filter)
 						->fetchAllObject();
 	}
-	
-	public function getCliente(){
+
+	public function getCliente()
+	{
 		return new Cliente($this->cliente_id);
 	}
-	
-	public function  getTecnico(){
+
+	public function getTecnico()
+	{
 		return new Tecnico($this->tecnico_id);
 	}
 
@@ -87,17 +96,17 @@ class Chamado extends Model
 	{
 		$self = new self($_REQUEST['id_registro']);
 		$status = $self->status ? 0 : 1;
-		
+
 		//== se estiver fechado, so muda o status ==//
-		if($self->status == 0){
+		if ($self->status == 0) {
 			return parent::changeStatus();
 		}
-		
+
 		$this->update(array(
-				'status' => $status,
-				'datafechamento' => date('Y-m-d H:i:s')
-			), $_REQUEST['id_registro']);
-		
+			'status' => $status,
+			'datafechamento' => date('Y-m-d H:i:s')
+				), $_REQUEST['id_registro']);
+
 		return json_encode(array(
 			0,
 			'Alterado com sucesso'

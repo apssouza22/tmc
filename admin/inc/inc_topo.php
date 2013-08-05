@@ -75,6 +75,37 @@ $pasta = Authenticate::this_folder_name();
 			}
 			?>
 			
+			<li></li>
+			<?php 
+			$vetor_menu = ModuloCMS::getVetor($pasta, 'parceiro');
+			if($vetor_menu['auth'])
+			{
+				?>
+				<li>Parceiros
+					<ul>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>parceiro/form.php">Inserir</a></li>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>parceiro/listar.php">Listar</a></li>
+					</ul>
+				</li>
+				<?php
+			}
+			?>
+			
+			<?php 
+			$vetor_menu = ModuloCMS::getVetor($pasta, 'repetidora');
+			if($vetor_menu['auth'])
+			{
+				?>
+				<li>Repetidoras
+					<ul>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>repetidoras/form.php">Inserir</a></li>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>repetidoras/listar.php">Listar</a></li>
+					</ul>
+				</li>
+				<?php
+			}
+			?>
+			
 			
 			<li></li>
 			<?php 
