@@ -3,16 +3,7 @@ include('../inc/inc_start.php');
 require_once dirname(__FILE__).'/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
-$classePagina  = 'Cliente';
-$sqlWhere = '';
-switch ($_GET['filtro']) {
-	case 'aguarde':
-		$sqlWhere = 'status=2';
-		break;
-	case 'aberto':
-		$sqlWhere = 'status=1';
-		break;
-}
+$classePagina  = 'Repetidora';
 
 $objeto = new $classePagina();
 $lista = $objeto->getAll();
@@ -48,10 +39,11 @@ else
 	<thead>
 		<tr>
 			<th width="100">&nbsp;</th>
-			<th>Empresa</th>
-			<th>Resonsável</th>
-			<th>Telefone</th>
-			<th>Email</th>
+			<th>Nome</th>
+			<th>Zelador</th>
+			<th>Telefone </th>
+			<th>Síndico</th>
+			<th>Telefone </th>
 		</tr>
 	</thead>
 	<tbody>
@@ -66,15 +58,16 @@ else
 		?>
 		<tr>
 			<td><?php echo $bt_action;?></td>
-			<td class="quando"><?php echo $itemLista->empresa;?></td>
+			<td ><?php echo $itemLista->nome;?></td>
+			<td ><?php echo $itemLista->nome_zelador;?></td>
 			<td>
-				<?php echo $itemLista->nome_responsavel;?>
+				<?php echo $itemLista->telefone_zelador;?>
 			</td>
 			<td>
-				<?php echo $itemLista->telefone;?>
+				<?php echo $itemLista->nome_sindico;?>
 			</td>
 			<td>
-				<?php echo $itemLista->email;?>
+				<?php echo $itemLista->telefone_sindico;?>
 			</td>
 			
 		</tr>

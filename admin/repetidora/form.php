@@ -3,21 +3,33 @@ include('../inc/inc_start.php');
 require_once dirname(__FILE__) . '/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
-$classePagina = 'Cliente';
+$classePagina = 'Repetidora';
 
 if ($_REQUEST['id']) {
 	$id = $_REQUEST['id'];
-	$tituloPagina = 'Editar Cliente';
+	$tituloPagina = 'Editar Repetidora';
 	$linkCancelar = constant("{$classePagina}::PG_DETALHE") . '?id=' . $id;
 } else {
 	$id = null;
-	$tituloPagina = 'Novo Cliente';
+	$tituloPagina = 'Nova Repetidora';
 	$linkCancelar = constant("{$classePagina}::PG_LISTAR");
 }
 
 $objClassePg = new $classePagina($id);
 
 if ($_POST) {
+	if($_POST['cliente_id']){
+		$equip = new Equipamento();
+		$idEquip = $equip->insert(array(
+			'cliente_id' =>$_POST['cliente_id'],
+			'descricao' => $_POST['descricao'],
+			'ip' => $_POST['ip']
+		));
+	}
+	$_POST['cliente_id']	= null;
+	$_POST['descricao']		= null;
+	$_POST['ip'] = null;
+	$_POST['equipamento_id'] = $idEquip?: 0;
 	$objClassePg->store($_POST);
 	header('Location: ' . constant("{$classePagina}::PG_DETALHE") . '?id=' . $id);
 	exit;
@@ -48,135 +60,105 @@ if ($_POST) {
 					<div class="caixa">
 						<h3>Dados</h3>
 						<div class="field">
-							<label><span>Nome do cliente:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="empresa" value="<?= $objClassePg->empresa ?>"></input>
+							<label><span>Nome:</span> <strong><em>*</em></strong></label>
+							<input type="text" name="nome" class="obr" value="<?= $objClassePg->nome ?>"></input>
 						</div>
 
 						<div class="field">
-							<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome_responsavel" value="<?= $objClassePg->nome_responsavel ?>"></input>
+							<label><span>Nome do condominio:</span></label>
+							<input type="text" name="nome_condominio" value="<?= $objClassePg->nome_condominio ?>"></input>
 						</div>
 
 						<div class="field">
-							<label><span>Email:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="email" value="<?= $objClassePg->email ?>"></input>
+							<label><span>Nome do síndico:</span></label>
+							<input type="text" name="nome_sindico" value="<?= $objClassePg->nome_sindico ?>"></input>
 						</div>
 
 						<div class="field half">
-							<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone" value="<?= $objClassePg->telefone ?>"></input>
-						</div>
-						<div class="field half">
-							<label><span>Telefone 2:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone1" value="<?= $objClassePg->telefone1 ?>"></input>
-						</div>
-						<div class="field half">
-							<label><span>Telefone 3:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone2" value="<?= $objClassePg->telefone2 ?>"></input>
-						</div>
-
-						<div class="field half">
-							<label><span>Cep:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="cep" maxlength="9" value="<?= $objClassePg->cep ?>"></input>
+							<label><span>Telefone do síndico:</span></label>
+							<input type="text" name="telefone_sindico" value="<?= $objClassePg->telefone_sindico ?>"></input>
 						</div>
 
 						<div class="field">
-							<label><span>Endereço:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="endereco" value="<?= $objClassePg->endereco ?>"></input>
+							<label><span>Nome da administradora:</span></label>
+							<input type="text" name="nome_administradora" value="<?= $objClassePg->nome_administradora ?>"></input>
 						</div>
 
 						<div class="field half">
-							<label><span>Bairro:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="bairro" value="<?= $objClassePg->bairro ?>"></input>
+							<label><span>Telefone da administradora:</span></label>
+							<input type="text" name="telefone_administradora" value="<?= $objClassePg->telefone_administradora ?>"></input>
+						</div>
+
+						<div class="field">
+							<label><span>Nome do zelador:</span></label>
+							<input type="text" name="nome_zelador" value="<?= $objClassePg->nome_zelador ?>"></input>
+						</div>
+
+						<div class="field half">
+							<label><span>Telefone do zelador:</span></label>
+							<input type="text" name="telefone_zelador" value="<?= $objClassePg->telefone_zelador ?>"></input>
 						</div>
 
 						<div class="field ">
-							<label><span>Cidade:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="cidade" value="<?= $objClassePg->cidade ?>"></input>
-						</div>
-						<div class="field half">
-							<label><span>Estado:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="estado" maxlength="2" value="<?= $objClassePg->estado ?>"></input>
-						</div>
-						<div class="field half">
-							<label><span>Serviço:</span> <strong><em>*</em></strong></label>
-							<select name="servico_nome[]">
-								<option value="Lan-to-lan">Lan-to-lan</option>
-								<option value="Porta ip">Porta ip</option>
-							</select>
-						</div>
-						<div class="field half">
-							<label><span>Velocidade:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="servico_velocidade[]" maxlength="2" value="<?= $objClassePg->estado ?>"></input>
-						</div>
-
-					</div>
-					<div class="field full controles">
-							<a href="#" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-disk"></span>Nova unidade</a>
-						</div>
-					<div class="caixa">
-						<h3>Dados da unidade</h3>
-
-						<div class="field">
-							<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome_responsavel" value="<?= $objClassePg->nome_responsavel ?>"></input>
-						</div>
-
-						<div class="field">
-							<label><span>Email:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="email" value="<?= $objClassePg->email ?>"></input>
-						</div>
-
-						<div class="field half">
-							<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone" value="<?= $objClassePg->telefone ?>"></input>
-						</div>
-						<div class="field half">
-							<label><span>Telefone 2:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone1" value="<?= $objClassePg->telefone1 ?>"></input>
-						</div>
-						<div class="field half">
-							<label><span>Telefone 3:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone2" value="<?= $objClassePg->telefone2 ?>"></input>
+							<label><span>Endereco:</span><strong><em>*</em></strong></label>
+							<input type="text" name="endereco" class="obr" value="<?= $objClassePg->endereco ?>"></input>
 						</div>
 
 						<div class="field half">
 							<label><span>Cep:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="cep" maxlength="9" value="<?= $objClassePg->cep ?>"></input>
+							<input type="text" name="cep" class="obr" value="<?= $objClassePg->cep ?>"></input>
 						</div>
-
-						<div class="field">
-							<label><span>Endereço:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="endereco" value="<?= $objClassePg->endereco ?>"></input>
-						</div>
-
-						<div class="field half">
-							<label><span>Bairro:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="bairro" value="<?= $objClassePg->bairro ?>"></input>
-						</div>
-
 						<div class="field half">
 							<label><span>Cidade:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="cidade" value="<?= $objClassePg->cidade ?>"></input>
+							<input type="text" name="cidade" class="obr" value="<?= $objClassePg->cidade ?>"></input>
 						</div>
+
 						<div class="field half">
 							<label><span>Estado:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="estado" maxlength="2" value="<?= $objClassePg->estado ?>"></input>
-						</div>
-						<div class="field half">
-							<label><span>Serviço:</span> <strong><em>*</em></strong></label>
-							<select name="servico_nome[]">
-								<option value="Lan-to-lan">Lan-to-lan</option>
-								<option value="Porta ip">Porta ip</option>
+							<select name="estado" id="estado" class="obr">
+								<option value=""></option>
+								<?			
+								$estados = array('AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','SC','SE','SP','TO');
+								foreach ($estados as $value) 
+								{	
+									$selected = $value== $objClassePg->estado ? 'selected="selected"': '';
+									echo "<option value='$value' $selected>$value</option>";
+								}?>
 							</select>
 						</div>
-						<div class="field half">
-							<label><span>Velocidade:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="servico_velocidade[]" maxlength="2" value="<?= $objClassePg->estado ?>"></input>
-						</div>
-
 
 					</div>
+					
+					<div class="caixa">
+						<h3>Dados do sentinela</h3>
+						<div class="field">
+							<label><span>Cliente:</span> </label>
+							<select name="cliente_id" nomecampo="Cliente">
+								<option value=""></option>
+								<?
+								$oCliente = new Cliente();
+								$aClientes = $oCliente->getAll();
+								foreach ($aClientes as $value) {
+									$selected = $objClassePg->getCliente()->id == $value->id ?
+											'selected="selected"':'';
+									echo "<option value='{$value->id}' $selected >{$value->empresa}</option>";
+								}
+								?>
+							</select>
+						</div>
+						
+						<div class="field half">
+							<label><span>Ip:</span></label>
+							<input type="text" name="ip" value="<?=$objClassePg->ip?> " placeholder="192.168.111.111" ></input>
+						</div>
+						
+						<div class="field">
+							<label><span>Descrição:</span></label>
+							<input type="text" name="descricao" value="<?=$objClassePg->descricao?>" maxlength="255"></input>
+						</div>
+						
+					</div>
+
 					<div class="field full controles">
 						<a href="#" onclick="$('#form_ins').submit();
 						return false;" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-disk"></span>Salvar</a>

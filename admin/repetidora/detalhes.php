@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
 
-$classePagina = 'Cliente';
+$classePagina = 'Repetidora';
 
 $objClassePg = new $classePagina($_GET['id']);
 
@@ -40,46 +40,60 @@ if (!$objClassePg->id) {
 					<h3>Dados do cliente</h3>
 
 					<div class="field ">
-						<label><span>Empresa:</span></label>
-						<?php echo $objClassePg->empresa; ?>
+						<label><span>Nome:</span></label>
+						<?php echo $objClassePg->nome; ?>
 					</div>
 
 					<div class="field ">
-						<label><span>Responsável:</span></label>
-						<?php echo $objClassePg->nome_responsavel ?>
+						<label><span>Nome do condomínio:</span></label>
+						<?php echo $objClassePg->nome_condominio ?>
 					</div>
 					<div class="field ">
-						<label><span>E-mail:</span></label>
-						<?php echo $objClassePg->email?>
+						<label><span>Nome síndico:</span></label>
+						<?php echo $objClassePg->nome_sindico?>
 					</div>
 
-					<div class="field half">
-						<label><span>Telefone:</span></label>
-						<?php echo $objClassePg->telefone; ?>
+					<div class="field ">
+						<label><span>Telefone do síndico:</span></label>
+						<?php echo $objClassePg->telefone_sindico; ?>
 					</div>
 					
-					<div class="field half">
-						<label><span>CEP:</span></label>
-						<?php echo $objClassePg->cep; ?>
+					<div class="field ">
+						<label><span>Nome da administradora:</span></label>
+						<?php echo $objClassePg->nome_administradora; ?>
+					</div>
+					
+					<div class="field ">
+						<label><span>Telefone da administradora:</span></label>
+						<?php echo $objClassePg->telefone_administradora; ?>
 					</div>
 
-					<div class="field">
+					<div class="field ">
+						<label><span>Nome do zelador:</span></label>
+						<?php echo $objClassePg->nome_zelador; ?>
+					</div>
+
+					<div class="field ">
+						<label><span>Telefone do zelador: </span></label>
+						<?php echo $objClassePg->telefone_zelador; ?>
+					</div>
+
+					<div class="field ">
 						<label><span>Endereço:</span></label>
 						<?php echo $objClassePg->endereco; ?>
 					</div>
 
 					<div class="field half">
-						<label><span>Bairro: </span></label>
+						<label><span>Bairro:</span></label>
 						<?php echo $objClassePg->bairro; ?>
 					</div>
-
 					<div class="field half">
 						<label><span>Cidade:</span></label>
 						<?php echo $objClassePg->cidade; ?>
 					</div>
 
 					<div class="field half">
-						<label><span>Status:</span></label>
+						<label><span>Estado:</span></label>
 						<?php echo $objClassePg->estado;
 						?>
 					</div>
