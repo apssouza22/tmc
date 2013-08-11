@@ -11,7 +11,7 @@ if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !
 	define('DB_PORTA', '');
 
 	define('PATH_SERV', $_SERVER['DOCUMENT_ROOT']);
-	$sitePath = '/Meusprojetos/tmc/';
+	$sitePath = '/jobs/tmc/';
 	
 } else {
 	define('DB_NOME', 'tmc');
@@ -26,7 +26,7 @@ if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !
 //testes com php UNIt
 if (!defined('PATH_SERV')) {
 	define('PATH_SERV', '/home/apssouza/Projetos/');
-	$sitePath = '/Meusprojetos/tmc/';
+	$sitePath = '/jobs/tmc/';
 }
 
 $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';

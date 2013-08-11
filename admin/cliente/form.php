@@ -94,7 +94,7 @@ if ($_POST) {
 						</div>
 						<div class="field">
 							<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone" value="<?= $objClassePg->telefone?>"></input>
+							<input type="text" name="telefone" maxlength="45" value="<?= $objClassePg->telefone?>"></input>
 						</div>
 					</div>
 						
@@ -133,15 +133,15 @@ if ($_POST) {
 
 				<div class="field half">
 					<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-					<input type="text" name="telefone[]" value="<?= $objClassePg->telefone ?>"></input>
+					<input type="text" name="telefone[]" maxlength="45" value="<?= $objClassePg->telefone ?>"></input>
 				</div>
 				<div class="field half">
 					<label><span>Telefone 2:</span> <strong><em>*</em></strong></label>
-					<input type="text" name="telefone1[]" value="<?= $objClassePg->telefone1 ?>"></input>
+					<input type="text" name="telefone1[]" maxlength="45" value="<?= $objClassePg->telefone1 ?>"></input>
 				</div>
 				<div class="field half">
 					<label><span>Telefone 3:</span> <strong><em>*</em></strong></label>
-					<input type="text" name="telefone2[]" value="<?= $objClassePg->telefone2 ?>"></input>
+					<input type="text" name="telefone2[]" maxlength="45" value="<?= $objClassePg->telefone2 ?>"></input>
 				</div>
 
 				<div class="field half">
@@ -181,7 +181,7 @@ if ($_POST) {
 				</div>
 				
 				<div class="field half">
-					<label><span>Parceiros?:</span> <strong><em>*</em></strong></label>
+					<label><span>Parceiro:</span> </label>
 					<select name="parceiro_id">
 						<option value="1">parceiro nome</option>
 						<option value="1">outro parceiro</option>

@@ -14,8 +14,10 @@ class Repetidora extends Model
 	const PG_EDITAR = 'form.php';
 	const PG_PASTA = 'repetidora';
 	
-	
-	
+	public function getSentinela(){
+		return new Equipamento($this->equipamento_id);
+		//var_dump($equip)
+	}
 }
 
 ?>

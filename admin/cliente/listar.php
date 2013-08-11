@@ -4,15 +4,6 @@ require_once dirname(__FILE__).'/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
 $classePagina  = 'Cliente';
-$sqlWhere = '';
-switch ($_GET['filtro']) {
-	case 'aguarde':
-		$sqlWhere = 'status=2';
-		break;
-	case 'aberto':
-		$sqlWhere = 'status=1';
-		break;
-}
 
 $objeto = new $classePagina();
 $lista = $objeto->getAll();
@@ -49,7 +40,7 @@ else
 		<tr>
 			<th width="100">&nbsp;</th>
 			<th>Empresa</th>
-			<th>Resonsável</th>
+			<th>Responsável</th>
 			<th>Telefone</th>
 			<th>Email</th>
 		</tr>

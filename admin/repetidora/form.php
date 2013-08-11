@@ -7,25 +7,27 @@ $classePagina = 'Repetidora';
 
 if ($_REQUEST['id']) {
 	$id = $_REQUEST['id'];
-	$tituloPagina = 'Editar Repetidora';
+	$tituloPagina = 'Editar repetidora';
 	$linkCancelar = constant("{$classePagina}::PG_DETALHE") . '?id=' . $id;
 } else {
 	$id = null;
-	$tituloPagina = 'Nova Repetidora';
+	$tituloPagina = 'Nova repetidora';
 	$linkCancelar = constant("{$classePagina}::PG_LISTAR");
 }
 
 $objClassePg = new $classePagina($id);
 
 if ($_POST) {
-	if($_POST['cliente_id']){
+	if($_POST['ip']){
 		$equip = new Equipamento();
 		$idEquip = $equip->insert(array(
-			'cliente_id' =>$_POST['cliente_id'],
+			'cliente_id' =>1,//cliente tmc
 			'descricao' => $_POST['descricao'],
 			'ip' => $_POST['ip']
 		));
 	}
+//	echo $idEquip ;
+//	exit;
 	$_POST['cliente_id']	= null;
 	$_POST['descricao']		= null;
 	$_POST['ip'] = null;
@@ -109,6 +111,10 @@ if ($_POST) {
 							<input type="text" name="cep" class="obr" value="<?= $objClassePg->cep ?>"></input>
 						</div>
 						<div class="field half">
+							<label><span>Bairro:</span> <strong><em>*</em></strong></label>
+							<input type="text" name="bairro" class="obr" value="<?= $objClassePg->bairro ?>"></input>
+						</div>
+						<div class="field half">
 							<label><span>Cidade:</span> <strong><em>*</em></strong></label>
 							<input type="text" name="cidade" class="obr" value="<?= $objClassePg->cidade ?>"></input>
 						</div>
@@ -128,33 +134,18 @@ if ($_POST) {
 						</div>
 
 					</div>
-					
+					<? $equip = $objClassePg->getSentinela(); ?>
 					<div class="caixa">
 						<h3>Dados do sentinela</h3>
-						<div class="field">
-							<label><span>Cliente:</span> </label>
-							<select name="cliente_id" nomecampo="Cliente">
-								<option value=""></option>
-								<?
-								$oCliente = new Cliente();
-								$aClientes = $oCliente->getAll();
-								foreach ($aClientes as $value) {
-									$selected = $objClassePg->getCliente()->id == $value->id ?
-											'selected="selected"':'';
-									echo "<option value='{$value->id}' $selected >{$value->empresa}</option>";
-								}
-								?>
-							</select>
-						</div>
-						
+												
 						<div class="field half">
 							<label><span>Ip:</span></label>
-							<input type="text" name="ip" value="<?=$objClassePg->ip?> " placeholder="192.168.111.111" ></input>
+							<input type="text" name="ip" value="<?=$equip->ip?> " placeholder="192.168.111.111" ></input>
 						</div>
 						
 						<div class="field">
 							<label><span>Descrição:</span></label>
-							<input type="text" name="descricao" value="<?=$objClassePg->descricao?>" maxlength="255"></input>
+							<input type="text" name="descricao" value="<?=$equip->descricao?>" maxlength="255"></input>
 						</div>
 						
 					</div>
