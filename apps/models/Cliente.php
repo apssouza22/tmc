@@ -30,7 +30,31 @@ class Cliente extends Model
 		return $filial[0];
 	}
 	
+	public function store($data)
+	{
+		if((isset($data['id']) && $data['id'] != '') || !empty($this->id) ){
+			$this->deleteFiliais();
+			$this->update($data, $this->id);
+			return $this->id;
+		}
+		return $this->insert($data);
+	}
 	
+	public function deleteFiliais(){
+		$unidade = new ClienteUnidade;
+		$unidade->deleteUnidadesByCliente($this->id);
+	}
+
+	public function getAllUnidades(){
+		$oUnidade = new ClienteUnidade();
+		$filter = new Filter;
+		$filter->where(" cliente_id =".$this->id);
+		return $oUnidade->getAll($filter);
+	}
+
+	/**
+	 * Retorna somente as filiais, ou seja, não retorna a matriz
+	 */
 	public function getFiliais(){
 		$matriz = $this->getMatriz();
 		if(!$matriz){

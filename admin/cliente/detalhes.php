@@ -67,7 +67,7 @@ $aFilial = $objClassePg->getFiliais();
 						<h3>Matriz</h3>
 						<div class="field ">
 							<label><span>Responsável:</span></label>
-							<?php echo $oMatriz->nome_responsavel ?>
+							<?php echo $oMatriz->nome ?>
 						</div>
 						<div class="field ">
 							<label><span>E-mail:</span></label>

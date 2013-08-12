@@ -8,6 +8,8 @@
 			$novo = $('.modelo').clone()
 					.removeClass('modelo')
 					.show();
+			$novo.find('.matriz').attr('name','matriz_'+totalUnidades++);
+			l($novo);
 			$('#form_ins').append($novo);
 		});
 	}

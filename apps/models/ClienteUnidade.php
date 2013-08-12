@@ -23,6 +23,12 @@ class ClienteUnidade extends Model
 		return $this->getAll($filter);
 	}
 	
+	public function deleteUnidadesByCliente($id){
+		return Query::create()
+						->delete(constant(get_class($this) . "::TB_NAME"))
+						->where("cliente_id = :id", array('id' => $id))
+						->exec();
+	}
 	
 }
 

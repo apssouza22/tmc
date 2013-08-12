@@ -89,6 +89,12 @@ abstract class Model
 			return $select->fetchAll();
 		}
 	}
+	
+	public function getAllVisible(){
+		$filter = new Filter();
+		$filter->where('status=1');
+		return $this->getAll($filter);
+	}
 
 	public function count(Filter $filter = null)
 	{
