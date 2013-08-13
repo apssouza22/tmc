@@ -154,6 +154,22 @@ $pasta = Authenticate::this_folder_name();
 				<?php
 			}
 			?>
+				
+			<li></li>
+			<?php 
+			$vetor_menu = ModuloCMS::getVetor($pasta, 'estudos');
+			if($vetor_menu['auth'])
+			{
+				?>
+				<li>Estudos
+					<ul>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>estudo/form.php">Inserir</a></li>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>estudo/listar.php">Listar</a></li>
+					</ul>
+				</li>
+				<?php
+			}
+			?>
 
             </ul>
         </div>

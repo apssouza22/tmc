@@ -4,9 +4,10 @@ require_once dirname(__FILE__) . '/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
 
-$classePagina = 'Parceiro';
+$classePagina = 'Estudo';
 
 $objClassePg = new $classePagina($_GET['id']);
+$oChamado = $objClassePg->getChamado();
 
 if (!$objClassePg->id) {
 	header('Location: ' . constant("{$classePagina}::PG_LISTAR"));
@@ -36,22 +37,22 @@ if (!$objClassePg->id) {
 					<h3>Dados do parceiro</h3>
 
 					<div class="field ">
-						<label><span>Empresa:</span></label>
-						<?php echo $objClassePg->nome; ?>
+						<label><span>Cliente:</span></label>
+						<?php echo $oChamado->getCliente()->empresa; ?>
 					</div>
 
 					<div class="field ">
-						<label><span>Responsável:</span></label>
-						<?php echo $objClassePg->nome_responsavel ?>
+						<label><span>Titulo:</span></label>
+						<?php echo $objClassePg->titulo ?>
 					</div>
 					<div class="field ">
-						<label><span>E-mail:</span></label>
-						<?php echo $objClassePg->email?>
+						<label><span>Texto:</span></label>
+						<?php echo $objClassePg->texto?>
 					</div>
 
 					<div class="field half">
-						<label><span>Telefone:</span></label>
-						<?php echo $objClassePg->telefone; ?>
+						<label><span>Observações:</span></label>
+						<?php echo $objClassePg->observacao; ?>
 					</div>
 
 				</div>

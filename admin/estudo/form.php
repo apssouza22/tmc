@@ -3,22 +3,51 @@ include('../inc/inc_start.php');
 require_once dirname(__FILE__) . '/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
-$classePagina = 'Parceiro';
+$classePagina = 'Estudo';
 
 if ($_REQUEST['id']) {
 	$id = $_REQUEST['id'];
-	$tituloPagina = 'Editar parceiro';
+	$tituloPagina = 'Editar estudo';
 	$linkCancelar = constant("{$classePagina}::PG_DETALHE") . '?id=' . $id;
 } else {
 	$id = null;
-	$tituloPagina = 'Novo parceiro';
+	$tituloPagina = 'Novo estudo';
 	$linkCancelar = constant("{$classePagina}::PG_LISTAR");
 }
 
 $objClassePg = new $classePagina($id);
+$oChamado = $objClassePg->getChamado();
 
 if ($_POST) {
-	$objClassePg->store($_POST);
+	$dateTime = new DateTime();
+	$dateInterval = new DateInterval('P0D');
+	$dateInterval->h =$_POST['sla'];
+	$prazoentrega = $dateTime->add($dateInterval )->format('Y-m-d H:i:s');
+	$_POST['sla'] = null;
+	
+	$chamado = new Chamado();
+	$idchamado = $chamado->store(array(
+		'descricao' => ' ',
+		'prazoentrega' => $prazoentrega,
+		'status' => 1,
+		'cliente_id' => $_POST['cliente_id'],
+		'id' => $_POST['chamado_id']
+	));
+	
+	$idchamado = empty($_POST['chamado_id']) ? $idchamado : $_POST['chamado_id'];
+	$id = $objClassePg->store(array(
+		'chamado_id' => $idchamado,
+		'texto' => $_POST['texto'],
+		'titulo' => $_POST['titulo'],
+		'observacao' => $_POST['observacao'],		
+		'datacadastro' => date('Y-m-d h:i:s'),
+		'id' => $_POST['id']
+	));
+	
+	$chamado->update(array(
+		'descricao'=> 'Estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
+		), $idchamado);
+	
 	header('Location: ' . constant("{$classePagina}::PG_DETALHE") . '?id=' . $id);
 	exit;
 }
@@ -44,28 +73,53 @@ if ($_POST) {
 
 				<form method="post" name="form_ins" id="form_ins" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return checar(this)">
 					<input type="hidden" name="id" value="<?php echo $id; ?>" />
+					<input type="hidden" name="chamado_id" value="<?php echo $objClassePg->chamado_id; ?>" />
 
 					<div class="caixa">
-						<h3>Dados do parceiro</h3>
-						<div class="field">
-							<label><span>Nome da empresa:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome" value="<?= $objClassePg->nome?>"></input>
+						<h3>Dados do estudo</h3>
+						<div class="field ">
+							<label><span>Cliente:</span> <strong><em>*</em></strong></label>
+							<select class="obr" name="cliente_id" nomecampo="Cliente">
+								<option value=""></option>
+								<?
+								$oCliente = new Cliente();
+								$aClientes = $oCliente->getAll();
+								foreach ($aClientes as $value) {
+									$selected = $oChamado->getCliente()->id == $value->id ?
+											'selected="selected"':'';
+									echo "<option value='{$value->id}' $selected >{$value->empresa}</option>";
+								}
+								?>
+							</select>
 						</div>
-
-						<div class="field">
-							<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome_responsavel" value="<?= $objClassePg->nome_responsavel ?>"></input>
-						</div>
-
-						<div class="field">
-							<label><span>Email:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="email" class="email" value="<?= $objClassePg->email ?>"></input>
-						</div>
-
+						
 						<div class="field half">
-							<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone" maxlength="255" value="<?= $objClassePg->telefone ?>"></input>
+							<label><span>Tempo para execução</span> <strong><em>*</em></strong><span class="contador">Em horas</span></label>
+							<?php 
+							$date1 = new \DateTime($oChamado->dataabertura);
+							$date2 = new \DateTime($oChamado->prazoentrega);
+							$diff = $date1->diff($date2);
+							$horas = $diff->d ? $diff->d * 24 : 0;
+							$horas += $diff->h;
+							?>
+							<input type="text" name="sla" class="obr number" value="<?=$horas?>" maxlength="3"/>
 						</div>
+						<div class="field ">
+							<label><span>Titulo</span> <strong><em>*</em></strong></label>
+							<input type="text" name="titulo" class="obr " value="<?=$objClassePg->titulo ?>" />
+						</div>
+
+						<div class="field alto full">
+							<label><span>Descrição:</span> <strong><em>*</em></strong></label>
+							<textarea name="texto" ><?=$objClassePg->texto ?></textarea>
+						</div>
+						
+						<? if(isset($_REQUEST['id'])){?>
+							<div class="field alto full">
+								<label><span>Resposta:</span></label>
+								<textarea name="observacao" rows="20"><?=$objClassePg->observacao ?></textarea>
+							</div>
+						<? }?>
 						
 						
 					</div>

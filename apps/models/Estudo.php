@@ -15,6 +15,11 @@ class Estudo extends Model
 	const PG_PASTA = 'estudo';
 	
 	
+	
+	public function getChamado(){
+		return new Chamado($this->chamado_id);
+	}
+	
 }
 
 ?>

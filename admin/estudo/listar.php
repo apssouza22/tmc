@@ -3,7 +3,7 @@ include('../inc/inc_start.php');
 require_once dirname(__FILE__).'/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
-$classePagina  = 'Parceiro';
+$classePagina  = 'Estudo';
 
 $objeto = new $classePagina();
 $lista = $objeto->getAll();
@@ -39,10 +39,9 @@ else
 	<thead>
 		<tr>
 			<th width="100">&nbsp;</th>
-			<th>Empresa</th>
-			<th>Responsável</th>
-			<th>Telefone</th>
-			<th>Email</th>
+			<th>Data</th>
+			<th>Titulo</th>
+			<th>Cliente</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -53,17 +52,13 @@ else
 		?>
 		<tr>
 			<td><?php echo $bt_action;?></td>
-			<td class="quando"><?php echo $itemLista->nome;?></td>
+			<td class="quando"><?php echo date('d/m/Y h:i', strtotime($itemLista->datacadastro));?></td>
 			<td>
-				<?php echo $itemLista->nome_responsavel;?>
-			</td>
+				<?php echo $itemLista->titulo;?>
+			</td>	
 			<td>
-				<?php echo $itemLista->telefone;?>
-			</td>
-			<td>
-				<?php echo $itemLista->email;?>
-			</td>
-			
+				<?php echo $itemLista->getChamado()->getCliente()->empresa;?>
+			</td>	
 		</tr>
 		<?php 
 	}
