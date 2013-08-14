@@ -36,7 +36,8 @@ abstract class Model
 
 	public function store($data){
 		if(isset($data['id']) && $data['id'] != '' ){
-			return $this->update($data, $data['id']);
+			$this->update($data, $data['id']);
+			return $data['id'];
 		}
 		return $this->insert($data);
 	}

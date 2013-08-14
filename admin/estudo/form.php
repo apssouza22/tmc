@@ -43,6 +43,7 @@ if ($_POST) {
 		'datacadastro' => date('Y-m-d h:i:s'),
 		'id' => $_POST['id']
 	));
+	$id  = empty($_POST['id']) ? $id : $_POST['id'];
 	
 	$chamado->update(array(
 		'descricao'=> 'Estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
@@ -109,15 +110,15 @@ if ($_POST) {
 							<input type="text" name="titulo" class="obr " value="<?=$objClassePg->titulo ?>" />
 						</div>
 
-						<div class="field alto full">
+						<div class="field alto fck full">
 							<label><span>Descrição:</span> <strong><em>*</em></strong></label>
-							<textarea name="texto" ><?=$objClassePg->texto ?></textarea>
+							<?php Fck::write('texto', htmlspecialchars_decode($objClassePg->texto)); ?>
 						</div>
 						
 						<? if(isset($_REQUEST['id'])){?>
-							<div class="field alto full">
+							<div class="field alto fck full">
 								<label><span>Resposta:</span></label>
-								<textarea name="observacao" rows="20"><?=$objClassePg->observacao ?></textarea>
+								<?php Fck::write('observacao', htmlspecialchars_decode($objClassePg->observacao)); ?>
 							</div>
 						<? }?>
 						

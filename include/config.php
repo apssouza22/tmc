@@ -43,6 +43,7 @@ $loader = new Loader(array(
 	HELPER,
 	MODEL,
 	LIB . 'dao/',
+	LIB . 'fck/',
 	DIR_ROOT . 'apps/'
 		)
 );

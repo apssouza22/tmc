@@ -45,14 +45,14 @@ if (!$objClassePg->id) {
 						<label><span>Titulo:</span></label>
 						<?php echo $objClassePg->titulo ?>
 					</div>
-					<div class="field ">
+					<div class="field alto full ">
 						<label><span>Texto:</span></label>
-						<?php echo $objClassePg->texto?>
+						<?php echo htmlspecialchars_decode($objClassePg->texto)?>
 					</div>
 
-					<div class="field half">
+					<div class="field alto full">
 						<label><span>Observações:</span></label>
-						<?php echo $objClassePg->observacao; ?>
+						<?php echo htmlspecialchars_decode($objClassePg->observacao); ?>
 					</div>
 
 				</div>
