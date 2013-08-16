@@ -66,8 +66,12 @@ $aFilial = $objClassePg->getFiliais();
 					<div class="caixa">
 						<h3>Matriz</h3>
 						<div class="field ">
+							<label><span>Unidade:</span></label>
+							<?php echo $oMatriz->nome?>
+						</div>
+						<div class="field ">
 							<label><span>Responsável:</span></label>
-							<?php echo $oMatriz->nome ?>
+							<?php echo $oMatriz->nome_responsavel ?>
 						</div>
 						<div class="field ">
 							<label><span>E-mail:</span></label>
@@ -114,7 +118,12 @@ $aFilial = $objClassePg->getFiliais();
 							<?php echo $oMatriz->velocidadeip;
 							?>
 						</div>
-
+						<? if($oMatriz->parceiro_id) {?>
+						<div class="field half">
+							<label><span>Parceiro:</span></label>
+							<a href="<?=DIR_CMS_HTM_ROOT .'parceiro/detalhes.php?id=' . $oMatriz->parceiro_id ?>"><?php echo $oMatriz->getParceiro()->nome?></a>
+						</div>
+						<?}?>
 					</div>
 
 					<?

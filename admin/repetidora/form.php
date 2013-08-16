@@ -63,60 +63,60 @@ if ($_POST) {
 						<h3>Dados</h3>
 						<div class="field">
 							<label><span>Nome:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome" class="obr" value="<?= $objClassePg->nome ?>"></input>
+							<input type="text" name="nome" class="obr" maxlength="255" value="<?= $objClassePg->nome ?>"></input>
 						</div>
 
 						<div class="field">
 							<label><span>Nome do condominio:</span></label>
-							<input type="text" name="nome_condominio" value="<?= $objClassePg->nome_condominio ?>"></input>
+							<input type="text" name="nome_condominio" maxlength="255" value="<?= $objClassePg->nome_condominio ?>"></input>
 						</div>
 
 						<div class="field">
 							<label><span>Nome do síndico:</span></label>
-							<input type="text" name="nome_sindico" value="<?= $objClassePg->nome_sindico ?>"></input>
+							<input type="text" name="nome_sindico" maxlength="255" value="<?= $objClassePg->nome_sindico ?>"></input>
 						</div>
 
 						<div class="field half">
 							<label><span>Telefone do síndico:</span></label>
-							<input type="text" name="telefone_sindico" value="<?= $objClassePg->telefone_sindico ?>"></input>
+							<input type="text" name="telefone_sindico" maxlength="255" value="<?= $objClassePg->telefone_sindico ?>"></input>
 						</div>
 
 						<div class="field">
 							<label><span>Nome da administradora:</span></label>
-							<input type="text" name="nome_administradora" value="<?= $objClassePg->nome_administradora ?>"></input>
+							<input type="text" name="nome_administradora" maxlength="255" value="<?= $objClassePg->nome_administradora ?>"></input>
 						</div>
 
 						<div class="field half">
 							<label><span>Telefone da administradora:</span></label>
-							<input type="text" name="telefone_administradora" value="<?= $objClassePg->telefone_administradora ?>"></input>
+							<input type="text" name="telefone_administradora" maxlength="255" value="<?= $objClassePg->telefone_administradora ?>"></input>
 						</div>
 
 						<div class="field">
 							<label><span>Nome do zelador:</span></label>
-							<input type="text" name="nome_zelador" value="<?= $objClassePg->nome_zelador ?>"></input>
+							<input type="text" name="nome_zelador" maxlength="255" value="<?= $objClassePg->nome_zelador ?>"></input>
 						</div>
 
 						<div class="field half">
 							<label><span>Telefone do zelador:</span></label>
-							<input type="text" name="telefone_zelador" value="<?= $objClassePg->telefone_zelador ?>"></input>
+							<input type="text" name="telefone_zelador" maxlength="255" value="<?= $objClassePg->telefone_zelador ?>"></input>
 						</div>
 
 						<div class="field ">
 							<label><span>Endereco:</span><strong><em>*</em></strong></label>
-							<input type="text" name="endereco" class="obr" value="<?= $objClassePg->endereco ?>"></input>
+							<input type="text" name="endereco" maxlength="255" class="obr" value="<?= $objClassePg->endereco ?>"></input>
 						</div>
 
 						<div class="field half">
 							<label><span>Cep:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="cep" class="obr" value="<?= $objClassePg->cep ?>"></input>
+							<input type="text" name="cep" maxlength="255" class="obr" value="<?= $objClassePg->cep ?>"></input>
 						</div>
 						<div class="field half">
 							<label><span>Bairro:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="bairro" class="obr" value="<?= $objClassePg->bairro ?>"></input>
+							<input type="text" name="bairro" maxlength="255" class="obr" value="<?= $objClassePg->bairro ?>"></input>
 						</div>
 						<div class="field half">
 							<label><span>Cidade:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="cidade" class="obr" value="<?= $objClassePg->cidade ?>"></input>
+							<input type="text" name="cidade" maxlength="255" class="obr" value="<?= $objClassePg->cidade ?>"></input>
 						</div>
 
 						<div class="field half">
@@ -140,7 +140,7 @@ if ($_POST) {
 												
 						<div class="field half">
 							<label><span>Ip:</span></label>
-							<input type="text" name="ip" value="<?=$equip->ip?> " placeholder="192.168.111.111" ></input>
+							<input type="text" name="ip" value="<?=$equip->ip?> " maxlength="20" placeholder="192.168.111.111" ></input>
 						</div>
 						
 						<div class="field">

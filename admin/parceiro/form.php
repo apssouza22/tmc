@@ -49,22 +49,22 @@ if ($_POST) {
 						<h3>Dados do parceiro</h3>
 						<div class="field">
 							<label><span>Nome da empresa:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome" value="<?= $objClassePg->nome?>"></input>
+							<input type="text"  class="obr" name="nome" maxlength="255" value="<?= $objClassePg->nome?>"></input>
 						</div>
 
 						<div class="field">
 							<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome_responsavel" value="<?= $objClassePg->nome_responsavel ?>"></input>
+							<input type="text"  class="obr" name="nome_responsavel" maxlength="255" value="<?= $objClassePg->nome_responsavel ?>"></input>
 						</div>
 
 						<div class="field">
 							<label><span>Email:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="email" class="email" value="<?= $objClassePg->email ?>"></input>
+							<input type="text"  class="obr" name="email" maxlength="255" class="email" value="<?= $objClassePg->email ?>"></input>
 						</div>
 
 						<div class="field half">
 							<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone" maxlength="255" value="<?= $objClassePg->telefone ?>"></input>
+							<input type="text"  class="obr" name="telefone" maxlength="255" value="<?= $objClassePg->telefone ?>"></input>
 						</div>
 						
 						

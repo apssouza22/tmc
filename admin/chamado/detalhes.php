@@ -45,11 +45,16 @@ $cliente = $objClassePg->getCliente();
 						<?php echo $cliente->empresa; ?>
 					</div>
 
-					<div class="field ">
+					<div class="field half">
 						<label><span>Prazo:</span></label>
 						<?php echo date('d/m/Y H:i:s', strtotime($objClassePg->prazoentrega)); ?>
 					</div>
 
+					<div class="field half ">
+						<label><span>Categoria:</span></label>
+						<?php echo $objClassePg->getCategoria()->nome; ?>
+					</div>
+					
 					<div class="field alto">
 						<label for="descricao"><span>Descrição:</span></label>
 						<?php echo htmlspecialchars_decode($objClassePg->descricao); ?>

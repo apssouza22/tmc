@@ -30,7 +30,7 @@ if ($_POST) {
 	$oUnidade = new ClienteUnidade();
 	if (isset($_POST['nome_responsavel'])) {
 		foreach ($_POST['nome_responsavel'] as $key => $value) {
-			if(!empty($_POST['nome'][$key])){
+			if (!empty($_POST['nome'][$key])) {
 				$oUnidade->store(array(
 					'cliente_id' => $id,
 					'nome' => $_POST['nome'][$key],
@@ -54,10 +54,10 @@ if ($_POST) {
 		}
 	}
 
-
 	header('Location: ' . constant("{$classePagina}::PG_DETALHE") . '?id=' . $id);
 	exit;
 }
+$estados = array('AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'SC', 'SE', 'SP', 'TO');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/html1-transitional.dtd>
 <html>
@@ -85,20 +85,20 @@ if ($_POST) {
 						<h3>Dados</h3>
 						<div class="field">
 							<label><span>Nome da empresa:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="empresa" value="<?= $objClassePg->empresa ?>"></input>
+							<input type="text" name="empresa" class="obr" value="<?= $objClassePg->empresa ?>"></input>
 						</div>
 						<div class="field">
 							<label><span>Nome do gerente/responsável:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome_gerente" value="<?= $objClassePg->nome_gerente ?>"></input>
+							<input type="text"  class="obr" name="nome_gerente" value="<?= $objClassePg->nome_gerente ?>"></input>
 						</div>
 
 						<div class="field">
 							<label><span>Email:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="email" value="<?= $objClassePg->email ?>"></input>
+							<input type="text"  class="obr" name="email" value="<?= $objClassePg->email ?>"></input>
 						</div>
 						<div class="field">
 							<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone" maxlength="45" value="<?= $objClassePg->telefone ?>"></input>
+							<input type="text"  class="obr" name="telefone" maxlength="45" value="<?= $objClassePg->telefone ?>"></input>
 						</div>
 					</div>
 					<?
@@ -110,71 +110,79 @@ if ($_POST) {
 
 							<div class="field">
 								<label><span>Nome da unidade:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="nome[]" ></input>
+								<input type="text" name="nome[]"  class="obr" ></input>
 							</div>
 							<div class="field">
 								<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="nome_responsavel[]" ></input>
+								<input type="text"  class="obr" name="nome_responsavel[]" ></input>
 							</div>
 
 							<div class="field">
 								<label><span>Email:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="uni_email[]" ></input>
+								<input type="text"  class="obr" name="uni_email[]" ></input>
 							</div>
 
 							<div class="field half">
 								<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="uni_telefone[]" maxlength="45" ></input>
+								<input type="text"  class="obr" name="uni_telefone[]" maxlength="45" ></input>
 							</div>
 							<div class="field half">
-								<label><span>Telefone 2:</span> <strong><em>*</em></strong></label>
+								<label><span>Telefone 2:</label>
 								<input type="text" name="telefone1[]" maxlength="45" ></input>
 							</div>
 							<div class="field half">
-								<label><span>Telefone 3:</span> <strong><em>*</em></strong></label>
+								<label><span>Telefone 3:</label>
 								<input type="text" name="telefone2[]" maxlength="45" ></input>
 							</div>
 
 							<div class="field half">
 								<label><span>Cep:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="cep[]" maxlength="9" ></input>
+								<input type="text"  class="obr" name="cep[]" maxlength="9" ></input>
 							</div>
 
 							<div class="field">
 								<label><span>Endereço:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="endereco[]" ></input>
+								<input type="text"  class="obr" name="endereco[]" ></input>
 							</div>
 
 							<div class="field half">
 								<label><span>Bairro:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="bairro[]" ></input>
+								<input type="text"  class="obr" name="bairro[]" ></input>
 							</div>
 
 							<div class="field ">
 								<label><span>Cidade:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="cidade[]" ></input>
+								<input type="text"  class="obr" name="cidade[]" ></input>
 							</div>
 							<div class="field half">
 								<label><span>Estado:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="estado[]" maxlength="2" ></input>
+								<select name="estado[]"  class="obr">
+									<option value=""></option>
+									<?
+															
+									foreach ($estados as $value) {
+										echo "<option value='$value'>$value</option>";
+									}
+									?>
+								</select>
 							</div>
 							<div class="field half">
-								<label><span>Velocidade Lan-to-lan:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="velocidadelan[]" maxlength="50" ></input>
+								<label><span>Velocidade Lan-to-lan:</span> </label>
+								<input type="text" name="velocidadelan[]" maxlength="10" ></input>
 							</div>
 							<div class="field half">
-								<label><span>Velocidade porta IP:</span> <strong><em>*</em></strong></label>
-								<input type="text" name="velocidadeip[]" maxlength="50" ></input>
+								<label><span>Velocidade porta IP:</span></label>
+								<input type="text" name="velocidadeip[]" maxlength="10" ></input>
 							</div>
 							<div class="field half">
-								<label><span>Matriz? :</span> <strong><em>*</em></strong></label>
+								<label><span>Matriz? :</span></label>
 
-								<input type="checkbox" name="ismatriz_<?= $indice++ ?>" value="1" > ></input>
+								<input type="checkbox" class="checkbox" name="ismatriz_<?= $indice++ ?>" value="1" > </input>
 							</div>
 
 							<div class="field half">
 								<label><span>Parceiro:</span> </label>
-								<select name="parceiro_id">
+								<select name="parceiro_id[]">
 									<option></option>';
 									<?
 									$parceiro = new Parceiro();
@@ -190,208 +198,223 @@ if ($_POST) {
 
 						<?
 					}
-						$unidades = $objClassePg->getAllUnidades();
+					$unidades = $objClassePg->getAllUnidades();
 
-						foreach ($unidades as $oUnidade) {
-							?>
+					foreach ($unidades as $oUnidade) {
+						?>
 
-							<div class="caixa " >
-								<h3>Dados</h3>
+						<div class="caixa " >
+							<h3>Dados</h3>
 
-								<div class="field">
-									<label><span>Nome da unidade:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="nome[]" value="<?= $oUnidade->nome ?>"></input>
-								</div>
-								<div class="field">
-									<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="nome_responsavel[]" value="<?= $oUnidade->nome_responsavel ?>"></input>
-								</div>
+							<div class="field">
+								<label><span>Nome da unidade:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="nome[]" value="<?= $oUnidade->nome ?>"></input>
+							</div>
+							<div class="field">
+								<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="nome_responsavel[]" value="<?= $oUnidade->nome_responsavel ?>"></input>
+							</div>
 
-								<div class="field">
-									<label><span>Email:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="uni_email[]" value="<?= $oUnidade->email ?>"></input>
-								</div>
+							<div class="field">
+								<label><span>Email:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="uni_email[]" value="<?= $oUnidade->email ?>"></input>
+							</div>
 
-								<div class="field half">
-									<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="uni_telefone[]" maxlength="45" value="<?= $oUnidade->telefone ?>"></input>
-								</div>
-								<div class="field half">
-									<label><span>Telefone 2:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="telefone1[]" maxlength="45" value="<?= $oUnidade->telefone1 ?>"></input>
-								</div>
-								<div class="field half">
-									<label><span>Telefone 3:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="telefone2[]" maxlength="45" value="<?= $oUnidade->telefone2 ?>"></input>
-								</div>
+							<div class="field half">
+								<label><span>Telefone:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="uni_telefone[]" maxlength="45" value="<?= $oUnidade->telefone ?>"></input>
+							</div>
+							<div class="field half">
+								<label><span>Telefone 2:</span> </label>
+								<input type="text" name="telefone1[]" maxlength="45" value="<?= $oUnidade->telefone1 ?>"></input>
+							</div>
+							<div class="field half">
+								<label><span>Telefone 3:</span> <strong><em>*</em></strong></label>
+								<input type="text" name="telefone2[]" maxlength="45" value="<?= $oUnidade->telefone2 ?>"></input>
+							</div>
 
-								<div class="field half">
-									<label><span>Cep:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="cep[]" maxlength="9" value="<?= $oUnidade->cep ?>"></input>
-								</div>
+							<div class="field half">
+								<label><span>Cep:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="cep[]" maxlength="9" value="<?= $oUnidade->cep ?>"></input>
+							</div>
 
-								<div class="field">
-									<label><span>Endereço:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="endereco[]" value="<?= $oUnidade->endereco ?>"></input>
-								</div>
+							<div class="field">
+								<label><span>Endereço:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="endereco[]" value="<?= $oUnidade->endereco ?>"></input>
+							</div>
 
-								<div class="field half">
-									<label><span>Bairro:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="bairro[]" value="<?= $oUnidade->bairro ?>"></input>
-								</div>
+							<div class="field half">
+								<label><span>Bairro:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="bairro[]" value="<?= $oUnidade->bairro ?>"></input>
+							</div>
 
-								<div class="field ">
-									<label><span>Cidade:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="cidade[]" value="<?= $oUnidade->cidade ?>"></input>
-								</div>
-								<div class="field half">
-									<label><span>Estado:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="estado[]" maxlength="2" value="<?= $oUnidade->estado ?>"></input>
-								</div>
-								<div class="field half">
-									<label><span>Velocidade Lan-to-lan:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="velocidadelan[]" maxlength="50" value="<?= $oUnidade->velocidadelan ?>"></input>
-								</div>
-								<div class="field half">
-									<label><span>Velocidade porta IP:</span> <strong><em>*</em></strong></label>
-									<input type="text" name="velocidadeip[]" maxlength="50" value="<?= $oUnidade->velocidadeip ?>"></input>
-								</div>
-								<div class="field half">
-									<label><span>Matriz? :</span> <strong><em>*</em></strong></label>
+							<div class="field ">
+								<label><span>Cidade:</span> <strong><em>*</em></strong></label>
+								<input type="text"  class="obr" name="cidade[]" value="<?= $oUnidade->cidade ?>"></input>
+							</div>
+							<div class="field half">
+								<label><span>Estado:</span> <strong><em>*</em></strong></label>
+								<select name="estado[]"  class="obr">
+									<option value=""></option>
 									<?
-									$checked = '';
-									if ($oUnidade->ismatriz == 1) {
-										$checked = 'checked="checked"';
+									foreach ($estados as $value) {
+										$selected = $value == $oUnidade->estado ? 'selected="selected"' : '';
+										echo "<option value='$value' $selected>$value</option>";
 									}
 									?>
-									<input type="checkbox" name="ismatriz_<?= $indice++ ?>" value="1" <?= $checked ?> ></input>
-								</div>
-
-								<div class="field half">
-									<label><span>Parceiro:</span> </label>
-									<select name="parceiro_id">
-										<option></option>';
-										<?
-										$parceiro = new Parceiro();
-										$parceiros = $parceiro->getAllVisible();
-										foreach ($parceiros as $value) {
-											$selected = '';
-											if ($value->id == $oUnidade->parceiro_id) {
-												$selected = 'selected="selected"';
-											}
-											echo "<option $selected value='{$value->id}'> " . $value->nome . '</option>';
-										}
-										?>
-									</select>
-								</div>
-
+								</select>
 							</div>
-						<? } ?>
+							<div class="field half">
+								<label><span>Velocidade Lan-to-lan:</span></label>
+								<input type="text" name="velocidadelan[]" maxlength="10" value="<?= $oUnidade->velocidadelan ?>"></input>
+							</div>
+							<div class="field half">
+								<label><span>Velocidade porta IP:</span> </label>
+								<input type="text" name="velocidadeip[]" maxlength="10" value="<?= $oUnidade->velocidadeip ?>"></input>
+							</div>
+							<div class="field half">
+								<label><span>Matriz? :</span></label>
+								<?
+								$checked = '';
+								if ($oUnidade->ismatriz == 1) {
+									$checked = 'checked="checked"';
+								}
+								?>
+								<input type="checkbox"  class="checkbox" name="ismatriz_<?= $indice++ ?>" value="1" <?= $checked ?> ></input>
+							</div>
 
-						<div class="field full controles">
-							<a  class="bt_padrao ui-state-default ui-corner-all js-addNovaUnidade"><span class="ui-icon ui-icon-disk"></span>Nova unidade</a>
+							<div class="field half">
+								<label><span>Parceiro:</span> </label>
+								<select name="parceiro_id[]">
+									<option></option>';
+									<?
+									$parceiro = new Parceiro();
+									$parceiros = $parceiro->getAllVisible();
+									foreach ($parceiros as $value) {
+										$selected = '';
+										if ($value->id == $oUnidade->parceiro_id) {
+											$selected = 'selected="selected"';
+										}
+										echo "<option $selected value='{$value->id}'> " . $value->nome . '</option>';
+									}
+									?>
+								</select>
+							</div>
+
 						</div>
+					<? } ?>
 
-					</form>
 					<div class="field full controles">
-						<a href="#" onclick="$('#form_ins').submit();
-							return false;" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-disk"></span>Salvar</a>
-						<a href="<?php echo $linkCancelar; ?>" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span>Cancelar</a>
-						<input type="submit" class="submit" />
-					</div>
-				</div>
-			</div>
-			<?php include(DIR_CMS_ROOT . 'inc/inc_rodape.php'); ?>
-
-			<div class="modelo unidade" style="display: none;">
-				<div class="caixa " >
-					<h3>Dados</h3>
-
-					<div class="field">
-						<label><span>Nome da unidade:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="nome[]" ></input>
-					</div>
-					<div class="field">
-						<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="nome_responsavel[]" ></input>
+						<a  class="bt_padrao ui-state-default ui-corner-all js-addNovaUnidade"><span class="ui-icon ui-icon-disk"></span>Nova unidade</a>
 					</div>
 
-					<div class="field">
-						<label><span>Email:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="email[]" ></input>
-					</div>
-
-					<div class="field half">
-						<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="telefone[]" maxlength="45" ></input>
-					</div>
-					<div class="field half">
-						<label><span>Telefone 2:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="telefone1[]" maxlength="45" ></input>
-					</div>
-					<div class="field half">
-						<label><span>Telefone 3:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="telefone2[]" maxlength="45"></input>
-					</div>
-
-					<div class="field half">
-						<label><span>Cep:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="cep[]" maxlength="9" ></input>
-					</div>
-
-					<div class="field">
-						<label><span>Endereço:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="endereco[]" ></input>
-					</div>
-
-					<div class="field half">
-						<label><span>Bairro:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="bairro[]" ></input>
-					</div>
-
-					<div class="field ">
-						<label><span>Cidade:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="cidade[]" ></input>
-					</div>
-					<div class="field half">
-						<label><span>Estado:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="estado[]" maxlength="2" ></input>
-					</div>
-					<div class="field half">
-						<label><span>Velocidade Lan-to-lan:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="velocidadelan[]" maxlength="50" ></input>
-					</div>
-					<div class="field half">
-						<label><span>Velocidade porta IP:</span> <strong><em>*</em></strong></label>
-						<input type="text" name="velocidadeip[]" maxlength="50" ></input>
-					</div>
-					<div class="field half">
-						<label><span>Matriz?:</span> <strong><em>*</em></strong></label>
-						<input type="checkbox" name="" class='matriz' value="1" ></input>
-					</div>
-
-					<div class="field half">
-						<label><span>Parceiro:</span> </label>
-						<select name="parceiro_id">
-							<option></option>';
-							<?
-							$parceiro = new Parceiro();
-							$parceiros = $parceiro->getAllVisible();
-							foreach ($parceiros as $value) {
-								echo "<option  value='{$value->id}'> " . $value->nome . '</option>';
-							}
-							?>
-						</select>
-					</div>
-
-				</div>
+				</form>
 				<div class="field full controles">
-					<a  class="bt_padrao ui-state-default ui-corner-all js-addNovaUnidade"><span class="ui-icon ui-icon-disk"></span>Nova unidade</a>
+					<a href="#" onclick="$('#form_ins').submit();
+						return false;" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-disk"></span>Salvar</a>
+					<a href="<?php echo $linkCancelar; ?>" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span>Cancelar</a>
+					<input type="submit" class="submit" />
 				</div>
 			</div>
+		</div>
+		<?php include(DIR_CMS_ROOT . 'inc/inc_rodape.php'); ?>
+
+		<div class="modelo unidade" style="display: none;">
+			<div class="caixa " >
+				<h3>Dados</h3>
+
+				<div class="field">
+					<label><span>Nome da unidade:</span> <strong><em>*</em></strong></label>
+					<input type="text" name="nome[]"  class="obr" ></input>
+				</div>
+				<div class="field">
+					<label><span>Nome do responsável:</span> <strong><em>*</em></strong></label>
+					<input type="text"  class="obr" name="nome_responsavel[]" ></input>
+				</div>
+
+				<div class="field">
+					<label><span>Email:</span> <strong><em>*</em></strong></label>
+					<input type="text"   class="obr" name="uni_email[]" ></input>
+				</div>
+
+				<div class="field half">
+					<label><span>Telefone:</span> <strong><em>*</em></strong></label>
+					<input type="text" class="obr" name="uni_telefone[]" maxlength="45" ></input>
+				</div>
+				<div class="field half">
+					<label><span>Telefone 2:</span> </label>
+					<input type="text" name="telefone1[]" maxlength="45" ></input>
+				</div>
+				<div class="field half">
+					<label><span>Telefone 3:</span> </label>
+					<input type="text" name="telefone2[]" maxlength="45"></input>
+				</div>
+
+				<div class="field half">
+					<label><span>Cep:</span> <strong><em>*</em></strong></label>
+					<input type="text"  class="obr" name="cep[]" maxlength="9" ></input>
+				</div>
+
+				<div class="field">
+					<label><span>Endereço:</span> <strong><em>*</em></strong></label>
+					<input type="text"  class="obr" name="endereco[]" ></input>
+				</div>
+
+				<div class="field half">
+					<label><span>Bairro:</span> <strong><em>*</em></strong></label>
+					<input type="text"  class="obr" name="bairro[]" ></input>
+				</div>
+
+				<div class="field ">
+					<label><span>Cidade:</span> <strong><em>*</em></strong></label>
+					<input type="text"  class="obr" name="cidade[]" ></input>
+				</div>
+				<div class="field half">
+					<label><span>Estado:</span> <strong><em>*</em></strong></label>
+					<select name="estado[]" class="obr">
+						<option value=""></option>
+						<?
+						foreach ($estados as $value) {
+							echo "<option value='$value' $selected>$value</option>";
+						}
+						?>
+					</select>
+				</div>
+				<div class="field half">
+					<label><span>Velocidade Lan-to-lan:</span> </label>
+					<input type="text" name="velocidadelan[]" maxlength="10" ></input>
+				</div>
+				<div class="field half">
+					<label><span>Velocidade porta IP:</span> </label>
+					<input type="text" name="velocidadeip[]" maxlength="10" ></input>
+				</div>
+				<div class="field half">
+					<label><span>Matriz?:</span> </label>
+					<input type="checkbox"  class="checkbox" name="" class='matriz' value="1" ></input>
+				</div>
+
+				<div class="field half">
+					<label><span>Parceiro:</span> </label>
+					<select name="parceiro_id[]">
+						<option></option>';
+						<?
+						$parceiro = new Parceiro();
+						$parceiros = $parceiro->getAllVisible();
+						foreach ($parceiros as $value) {
+							echo "<option  value='{$value->id}'> " . $value->nome . '</option>';
+						}
+						?>
+					</select>
+				</div>
+
+			</div>
+			<div class="field full controles">
+				<a  class="bt_padrao ui-state-default ui-corner-all js-addNovaUnidade"><span class="ui-icon ui-icon-disk"></span>Nova unidade</a>
+			</div>
+		</div>
 		<script>
-			var totalUnidades = '<?=$indice?>';
+					var totalUnidades = '<?= $indice ?>';
 		</script>
-			<script src="<?php echo DIR_CMS_HTM_ROOT; ?>js/admin.js?versao=1" type="text/javascript"></script>
+		<script src="<?php echo DIR_CMS_HTM_ROOT; ?>js/admin.js?versao=1" type="text/javascript"></script>
 	</body>
 </html>

@@ -86,6 +86,21 @@ if ($_POST) {
 							</select>
 						</div>
 						<div class="field half">
+							<label><span>Categoria:</span> <strong><em>*</em></strong></label>
+							<select class="obr" name="categoria_id" nomecampo="Categoria">
+								<option value=""></option>
+								<?
+								$oCat = new ChamadoCategoria();
+								$aCat = $oCat->getAll();
+								foreach ($aCat as $value) {
+									$selected = $objClassePg->getCategoria()->id == $value->id ?
+											'selected="selected"':'';
+									echo "<option value='{$value->id}' $selected >{$value->nome}</option>";
+								}
+								?>
+							</select>
+						</div>
+						<div class="field half">
 							<label><span>SLA do chamado</span> <strong><em>*</em></strong><span class="contador">Em horas</span></label>
 							<?php 
 							$date1 = new \DateTime($objClassePg->dataabertura);
@@ -103,7 +118,7 @@ if ($_POST) {
 						</div>
 						
 						<div class="field full alto">
-							<label ><span>Problema</span> <strong><em>*</em></strong> <span class="contador">1000</span></label>
+							<label ><span>Problema</span> <span class="contador">1000</span></label>
 							<textarea onkeyup="limita_texto(this, 1000)" class=""  name="problema"><?php echo $objClassePg->problema; ?></textarea>
 						</div>
 						

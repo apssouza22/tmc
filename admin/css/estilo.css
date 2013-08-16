@@ -58,7 +58,7 @@ a:hover {text-decoration: underline; color: #666}
 
 
 	
-/*_____CONTEÚDO__________________________*/
+/*_____CONTE?DO__________________________*/
 
 #central {
 	position:relative;
@@ -70,7 +70,7 @@ a:hover {text-decoration: underline; color: #666}
 
 #conteudo
     {
-	position:relative; width: 780px;
+	position:relative; width: 100%;
 	float: right;
 	padding: 10px 0px 30px 10px;
 	background: #fff;
@@ -96,7 +96,7 @@ a:hover {text-decoration: underline; color: #666}
 	
 	
 	
-/*_____RODAPÉ__________________________*/
+/*_____RODAP?__________________________*/
 
 #rodape
     {
@@ -161,6 +161,8 @@ ul.indice ul {
 			background: #e5e5e5;
 			border-color: #ccc;
 		}
+
+
 
 
 

@@ -71,6 +71,8 @@ class Cliente extends Model
 		$filter->where("id != {$matriz->id} AND cliente_id =" . $this->id);
 		return $oUnidade->getAll($filter);
 	}
+	
+
 
 }
 

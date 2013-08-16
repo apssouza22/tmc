@@ -50,20 +50,20 @@ if ($_POST) {
 						<h3>Dados</h3>
 						<div class="field">
 							<label><span>Nome:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="nome" value="<?= $objClassePg->nome ?>"></input>
+							<input type="text" class="obr" name="nome" value="<?= $objClassePg->nome ?>"></input>
 						</div>
 						<div class="field">
 							<label><span>Email:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="email" value="<?= $objClassePg->email ?>"></input>
+							<input type="text" class="obr" name="email" value="<?= $objClassePg->email ?>"></input>
 						</div>
 						
 						<div class="field">
 							<label><span>Telefone:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="telefone" value="<?= $objClassePg->telefone?>"></input>
+							<input type="text" class="obr" name="telefone" value="<?= $objClassePg->telefone?>"></input>
 						</div>
 						<div class="field">
-							<label><span>RG:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="rg" value="<?= $objClassePg->rg?>"></input>
+							<label><span>RG:</span></label>
+							<input type="text"  name="rg" value="<?= $objClassePg->rg?>"></input>
 						</div>
 					</div>
 						

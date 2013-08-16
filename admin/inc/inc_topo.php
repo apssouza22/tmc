@@ -21,7 +21,7 @@ $pasta = Authenticate::this_folder_name();
 		
 		
 		
-        <div style="position: absolute; left: 170px; top: 101px;">
+        <div style="position: absolute; left: 0; top: 101px;">
             <ul id="menusup" style="display: none;">
             
 			<?php 

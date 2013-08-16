@@ -65,12 +65,12 @@ if ($_POST) {
 						
 						<div class="field half">
 							<label><span>Ip:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="ip" value="<?=$objClassePg->ip?> " placeholder="192.168.111.111" ></input>
+							<input type="text" class="obr" name="ip" value="<?=$objClassePg->ip?> " placeholder="192.168.111.111" ></input>
 						</div>
 						
 						<div class="field">
 							<label><span>Descrição:</span> <strong><em>*</em></strong></label>
-							<input type="text" name="descricao" value="<?=$objClassePg->descricao?>" maxlength="255"></input>
+							<input type="text"  class="obr" name="descricao" value="<?=$objClassePg->descricao?>" maxlength="255"></input>
 						</div>
 						
 					</div>

@@ -32,6 +32,7 @@ class Chamado extends Model
 		'tecnico_id' => 0,
 		'prazoentrega' => $prazoentrega,
 		'cliente_id' => $eq->cliente_id,
+		'categoria_id' => 1,
 		'descricao' => 'Chamado aberto automaticamente por queda de equipamentos  Eq. '.$eq->descricao.'  IP: '.$eq->ip,
 		));
 	}
@@ -90,6 +91,10 @@ class Chamado extends Model
 	public function getTecnico()
 	{
 		return new Tecnico($this->tecnico_id);
+	}
+	
+	public function getCategoria(){
+		return new ChamadoCategoria($this->categoria_id);
 	}
 
 	public function changeStatus()
