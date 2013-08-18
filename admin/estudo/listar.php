@@ -21,7 +21,7 @@ $lista = $objeto->getAll();
 <div id="conteudo">
 
 
-<h1><strong>Lista de parceiros</strong></h1>
+<h1><strong>Lista de estudos</strong></h1>
 
 
 <?php
@@ -38,7 +38,7 @@ else
 	<table class="tb_dados_desc">
 	<thead>
 		<tr>
-			<th width="100">&nbsp;</th>
+			<th width="130">&nbsp;</th>
 			<th>Data</th>
 			<th>Titulo</th>
 			<th>Cliente</th>

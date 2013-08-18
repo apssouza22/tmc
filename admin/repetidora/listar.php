@@ -38,7 +38,7 @@ else
 	<table class="tb_dados_desc">
 	<thead>
 		<tr>
-			<th width="100">&nbsp;</th>
+			<th width="130">&nbsp;</th>
 			<th>Nome</th>
 			<th>Zelador</th>
 			<th>Telefone </th>

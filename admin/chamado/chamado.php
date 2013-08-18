@@ -131,8 +131,8 @@ if ($_POST) {
 									$selected = $key == $objClassePg->status ?
 											'selected="selected"' : '';
 									
-									$selected = $objClassePg->status == '' && $key == 1 ?
-											'selected="selected"' : '';
+//									$selected = $objClassePg->status == '' && $key == 1 ?
+//											'selected="selected"' : '';
 									
 									echo "<option value='{$key}' $selected >{$value}</option>";
 								}

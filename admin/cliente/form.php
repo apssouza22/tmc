@@ -36,7 +36,6 @@ if ($_POST) {
 					'nome' => $_POST['nome'][$key],
 					'nome_responsavel' => $_POST['nome_responsavel'][$key],
 					'email' => $_POST['uni_email'][$key],
-					'nome' => $_POST['nome'][$key],
 					'telefone' => $_POST['uni_telefone'][$key],
 					'telefone1' => $_POST['telefone1'][$key],
 					'telefone2' => $_POST['telefone2'][$key],

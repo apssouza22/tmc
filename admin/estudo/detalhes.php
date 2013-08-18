@@ -30,7 +30,7 @@ if (!$objClassePg->id) {
 				$bt_action = require '../inc/inc_botoes_edicao.php';
 				?>
 
-				<h1>Detalhes do parceiro<span class="botoes"><?php echo $bt_action; ?></span></h1>
+				<h1>Detalhes do estudo<span class="botoes"><?php echo $bt_action; ?></span></h1>
 
 
 				<div class="caixa">

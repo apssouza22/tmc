@@ -30,6 +30,7 @@ if ($_POST) {
 		'descricao' => ' ',
 		'prazoentrega' => $prazoentrega,
 		'status' => 1,
+		'categoria_id' => 4,//estudo de viabilidade
 		'cliente_id' => $_POST['cliente_id'],
 		'id' => $_POST['chamado_id']
 	));
@@ -40,13 +41,13 @@ if ($_POST) {
 		'texto' => $_POST['texto'],
 		'titulo' => $_POST['titulo'],
 		'observacao' => $_POST['observacao'],		
-		'datacadastro' => date('Y-m-d h:i:s'),
+		//'datacadastro' => date('Y-m-d h:i:s'),
 		'id' => $_POST['id']
 	));
 	$id  = empty($_POST['id']) ? $id : $_POST['id'];
 	
 	$chamado->update(array(
-		'descricao'=> 'Estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
+		'descricao'=> 'Realizar estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
 		), $idchamado);
 	
 	header('Location: ' . constant("{$classePagina}::PG_DETALHE") . '?id=' . $id);

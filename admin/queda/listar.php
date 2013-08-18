@@ -9,7 +9,6 @@ $objeto = new $classePagina();
 $filter = new Filter();
 $filter->orderBy('datainicio DESC');
 $filter->limit(3000);
-$filter->where($sqlWhere);
 $lista = $objeto->getAllCompleto($filter);
 
 ?>
