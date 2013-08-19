@@ -1,4 +1,4 @@
-<?php 
+d<?php 
 include('../inc/inc_start.php'); 
 require_once dirname(__FILE__).'/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
@@ -55,7 +55,7 @@ else
 			<th>Data limite</th>
 			<th>Técnico</th>
 			<th>Cliente</th>
-			<th>Descrição</th>
+			<th>Problema</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -71,15 +71,15 @@ else
 		
 		
 		$class_status = '';
-		
-		if(time() + 3600  > strtotime($itemLista->prazoentrega)){
-			$class_status = 'yellow';
+		if($itemLista->status ==1){
+			if(time() + 3600  > strtotime($itemLista->prazoentrega)){
+				$class_status = 'yellow';
+			}
+
+			if(time() > strtotime($itemLista->prazoentrega)){
+				$class_status = 'red';
+			}
 		}
-		
-		if(time() > strtotime($itemLista->prazoentrega)){
-			$class_status = 'red';
-		}
-		
 		?>
 		<tr class="<?=$class_status?>" >
 			<td><?php echo $bt_action;?></td>
@@ -92,7 +92,7 @@ else
 				<?php echo $itemLista->empresa;?>
 			</td>
 			<td>
-				<?php echo htmlspecialchars_decode($itemLista->descricao);?>
+				<?php echo htmlspecialchars_decode($itemLista->pro_relatado);?>
 			</td>
 			
 		</tr>

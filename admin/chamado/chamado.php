@@ -113,13 +113,23 @@ if ($_POST) {
 						</div>
 
 						<div class="field full alto">
-							<label><span>Descrição</span> <strong><em>*</em></strong> <span class="contador">1000</span></label>
-							<textarea onkeyup="limita_texto(this, 1000)" class="obr"  name="descricao" nomecampo="Descrição"><?php echo $objClassePg->descricao; ?></textarea>
+							<label><span>Problema relatado</span> <strong><em>*</em></strong> <span class="contador">5000</span></label>
+							<textarea onkeyup="limita_texto(this, 5000)" class="obr"  name="pro_relatado" nomecampo="Problema relatado"><?php echo $objClassePg->pro_relatado; ?></textarea>
 						</div>
 						
 						<div class="field full alto">
-							<label ><span>Problema</span> <span class="contador">1000</span></label>
-							<textarea onkeyup="limita_texto(this, 1000)" class=""  name="problema"><?php echo $objClassePg->problema; ?></textarea>
+							<label ><span>Problema encontrado</span> <span class="contador">5000</span></label>
+							<textarea onkeyup="limita_texto(this, 5000)" class=""  name="pro_encontrado"><?php echo $objClassePg->pro_encontrado; ?></textarea>
+						</div>
+						
+						<div class="field full alto">
+							<label ><span>Solução</span> <span class="contador">5000</span></label>
+							<textarea onkeyup="limita_texto(this, 5000)" class=""  name="solucao"><?php echo $objClassePg->solucao; ?></textarea>
+						</div>
+						
+						<div class="field full alto">
+							<label ><span>Observação</span> <span class="contador">5000</span></label>
+							<textarea onkeyup="limita_texto(this, 5000)" class=""  name="observacao"><?php echo $objClassePg->observacao; ?></textarea>
 						</div>
 						
 						<div class="field half">

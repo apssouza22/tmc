@@ -170,6 +170,21 @@ $pasta = Authenticate::this_folder_name();
 				<?php
 			}
 			?>
+				
+			<li></li>
+			<?php 
+			$vetor_menu = ModuloCMS::getVetor($pasta, 'relatorio');
+			if($vetor_menu['auth'])
+			{
+				?>
+				<li>Relatórios
+					<ul>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>relatorio/indisponibilidade.php">Indisponibilidade</a></li>
+					</ul>
+				</li>
+				<?php
+			}
+			?>
 
             </ul>
         </div>

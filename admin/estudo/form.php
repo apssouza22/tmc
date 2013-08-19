@@ -27,7 +27,7 @@ if ($_POST) {
 	
 	$chamado = new Chamado();
 	$idchamado = $chamado->store(array(
-		'descricao' => ' ',
+		'observacao' => ' ',
 		'prazoentrega' => $prazoentrega,
 		'status' => 1,
 		'categoria_id' => 4,//estudo de viabilidade
@@ -47,7 +47,7 @@ if ($_POST) {
 	$id  = empty($_POST['id']) ? $id : $_POST['id'];
 	
 	$chamado->update(array(
-		'descricao'=> 'Realizar estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
+		'observacao'=> 'Realizar estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
 		), $idchamado);
 	
 	header('Location: ' . constant("{$classePagina}::PG_DETALHE") . '?id=' . $id);

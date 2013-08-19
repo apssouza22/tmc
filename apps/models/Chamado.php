@@ -33,7 +33,7 @@ class Chamado extends Model
 		'prazoentrega' => $prazoentrega,
 		'cliente_id' => $eq->cliente_id,
 		'categoria_id' => 1,
-		'descricao' => 'Chamado aberto automaticamente por queda de equipamentos  Eq. '.$eq->descricao.'  IP: '.$eq->ip,
+		'pro_relatado' => 'Indisponibilidade no Link  Eq. '.$eq->descricao.'  IP: '.$eq->ip,
 		));
 	}
 

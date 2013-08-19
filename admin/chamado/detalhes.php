@@ -56,16 +56,25 @@ $cliente = $objClassePg->getCliente();
 					</div>
 					
 					<div class="field alto">
-						<label for="descricao"><span>Descrição:</span></label>
-						<?php echo htmlspecialchars_decode($objClassePg->descricao); ?>
+						<label for="descricao"><span>Problema relatado:</span></label>
+						<?php echo nl2br(htmlspecialchars_decode($objClassePg->pro_relatado)); ?>
+					</div>
+					
+					<div class="field alto">
+						<label for="descricao"><span>Problema encontrado:</span></label>
+						<?php echo nl2br($objClassePg->pro_encontrado); ?>
+					</div>
+					
+					<div class="field alto">
+						<label for="descricao"><span>Solução:</span></label>
+						<?php echo nl2br($objClassePg->solucao); ?>
+					</div>
+					
+					<div class="field alto">
+						<label for="descricao"><span>Observação:</span></label>
+						<?php echo nl2br($objClassePg->observacao); ?>
 					</div>
 
-						<? if ($objClassePg->problema != 'NULL') { ?>
-						<div class="field alto">
-							<label><span>Problema:</span></label>
-						<?php echo nl2br($objClassePg->problema); ?>
-						</div>
-						<? } ?>
 
 					<? if ($cliente->tecnico) { ?>
 						<div class="field alto">

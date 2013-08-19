@@ -3,14 +3,8 @@ include('../inc/inc_start.php');
 require_once dirname(__FILE__) . '/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
 
-$classePagina = 'Queda';
-if (!$_POST) {
-	$objeto = new $classePagina();
-	$filter = new Filter();
-	$filter->orderBy('datainicio DESC');
-	$filter->where($sqlWhere);
-	$lista = $objeto->getAllCompleto($filter);
-} else {
+$classePagina = 'Relatorio';
+if ($_POST) {
 	$_POST['inicio'] = $_POST['inicio'] ? : '01/01/2000 00:00:00';
 
 	$dataIni = explode(' ', $_POST['inicio']);
@@ -24,6 +18,11 @@ if (!$_POST) {
 	$filter->orderBy('datainicio DESC');
 	$filter->where("datainicio BETWEEN '{$dataIni}' AND  '{$dataFim}'");
 	$lista = $objeto->getAllCompleto($filter, $_POST['cliente']);
+}else{
+	$objeto = new $classePagina();
+	$filter = new Filter();
+	$filter->orderBy('dataabertura DESC');
+	$lista = $objeto->getRelatorioIndisponibilidade($filter);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/html1-transitional.dtd>
@@ -86,33 +85,46 @@ if (!$_POST) {
 					<table class="tb_dados_desc">
 						<thead>
 							<tr>
+								<th>Nº Chamado </th>
 								<th>Data de inicio</th>
 								<th>Data da volta</th>
-								<th>Período fora</th>
-								<th>Equipamento</th>
-								<th>Motivo</th>
+								<th>Duração</th>
+								<th>Site</th>
+								<th>Problema relatado</th>
+								<th>Problema encontrado</th>
+								<th>Solução</th>
+								<th>Observação</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 							foreach ($lista as $itemLista) {
-								$classe_visibilidade = $itemLista->status == 1 ? 'ico_olho_on_on' : 'ico_olho_off_on';
-								$bt_view = '<a href="detalhes.php?id=' . $itemLista->id . '" class="bt_ico ico_view" title="detalhes"><em>detalhes</em></a>';
-								$bt_action = $bt_view . $bt_edit;
 								?>
 								<tr>
-									<td class="quando"><em><?php echo $itemLista->datainicio; ?></em> <?php echo date('d/m/Y H:i:s', strtotime($itemLista->datainicio)); ?></td>
 									<td>
-										<?= $itemLista->datafim ? date('d/m/Y H:i:s', strtotime($itemLista->datafim)) : 'Ainda fora'; ?>
+										<?= $itemLista->id; ?>
+									</td>
+									<td class="quando"><em><?php echo $itemLista->dataabertura; ?></em> <?php echo date('d/m/Y H:i:s', strtotime($itemLista->dataabertura)); ?></td>
+									<td>
+										<?= $itemLista->datafechamento ? date('d/m/Y H:i:s', strtotime($itemLista->datafechamento)) : 'Ainda fora'; ?>
 									</td>
 									<td>
-										<?php echo helpers\Date::intervalDiff($itemLista->datainicio, $itemLista->datafim ? : 'now' ); ?>
+										<?php echo helpers\Date::intervalDiff($itemLista->dataabertura, $itemLista->datafechamento ?: 'now' );?>
 									</td>
 									<td>
-										<?= $itemLista->descricao ?>
+										<?= nl2br($itemLista->descricao) ?>
 									</td>
 									<td>
-										<?= $itemLista->problema == 'NULL' ? 'Não informado' : $itemLista->problema ?>
+										<?= nl2br($itemLista->pro_relatado) ?>
+									</td>
+									<td>
+										<?= nl2br($itemLista->pro_encontrado) ?>
+									</td>
+									<td>
+										<?= nl2br($itemLista->solucao) ?>
+									</td>
+									<td>
+										<?= nl2br($itemLista->observacao) ?>
 									</td>
 								</tr>
 								<?php
