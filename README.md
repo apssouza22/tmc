@@ -9,3 +9,7 @@ lista de chamado - fica vermelho quando tiver passado o prazo de resolução
 
 relatorio
 só vai trazer resultado que tenha queda e equipamento relacionado ao chamado
+
+
+## Questões
+Definir mensagens automatica quando voltar o equipamento

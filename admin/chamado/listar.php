@@ -1,4 +1,4 @@
-d<?php 
+<?php 
 include('../inc/inc_start.php'); 
 require_once dirname(__FILE__).'/../../include/config.php';
 ContainerDi::getObject('UsuarioCMS')->autentica();
@@ -63,9 +63,10 @@ else
 	foreach ($lista as $itemLista)
 	{
 		$classe_visibilidade = $itemLista->status==1 ? 'ico_olho_on_on' : 'ico_olho_off_on';
-		$bt_olho = '<a href="'.DIR_HTM_ROOT.'ajax.php" onclick="return toggle_exibir(\''.$classePagina.'\', ' . $itemLista->id . ', this)" class="bt_ico ico_olho ' . $classe_visibilidade . '" title="status"><em>visibilidade</em></a>';
+		$title = $itemLista->status==1 ? 'Chamado aberto acompanhe o status' : 'Chamado encerrado';
+		$bt_olho = '<a href="'.DIR_HTM_ROOT.'ajax.php" onclick="return toggle_exibir(\''.$classePagina.'\', ' . $itemLista->id . ', this)" class="bt_ico ico_olho ' . $classe_visibilidade . '" title="'.$title.'"><em>visibilidade</em></a>';
 		$bt_view = '<a href="detalhes.php?id=' . $itemLista->id . '" class="bt_ico ico_view" title="detalhes"><em>detalhes</em></a>';
-		$bt_edit = '<a href="chamado.php?id=' . $itemLista->id . '" class="bt_ico ico_edit" title="editar"><em>editar</em></a>';
+		$bt_edit = '<a href="chamado.php?id=' . $itemLista->id . '" class="bt_ico ico_edit" title="Feche e informe o problema"><em>editar</em></a>';
 		$bt_olho = $itemLista->status==2 ? $bt_edit : $bt_olho ;
 		$bt_action = $bt_olho . $bt_view . $bt_edit;
 		

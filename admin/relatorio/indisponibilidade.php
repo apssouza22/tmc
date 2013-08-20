@@ -15,9 +15,9 @@ if ($_POST) {
 	$dataFim = implode('-', array_reverse($dataFim)) . ' 23:59:59';
 	$objeto = new $classePagina();
 	$filter = new Filter();
-	$filter->orderBy('datainicio DESC');
+	$filter->orderBy('dataabertura DESC');
 	$filter->where("datainicio BETWEEN '{$dataIni}' AND  '{$dataFim}'");
-	$lista = $objeto->getAllCompleto($filter, $_POST['cliente']);
+	$lista = $objeto->getRelatorioIndisponibilidade($filter, $_POST['cliente']);
 }else{
 	$objeto = new $classePagina();
 	$filter = new Filter();
@@ -65,9 +65,9 @@ if ($_POST) {
 
 					</div>
 					<div class="field full controles">
-						<a href="#" onclick="$('#form_ins').submit();
-						return false;" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-disk"></span>Salvar</a>
-						<a href="<?php echo $linkCancelar; ?>" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span>Cancelar</a>
+						<a href="#"  onclick="$('#form_ins').submit();
+						return false;" class="bt_padrao ui-state-default ui-corner-all"><span style="background-position: -162px -112px;" class="ui-icon ui-icon-disk"></span>Buscar</a>
+						<a href="#" onclick="exportarRelatorioIndisponibilidade(); return false;" class="bt_padrao ui-state-default ui-corner-all"><span class="ui-icon  ui-icon-disk"></span>Exportar</a>
 						<input type="submit" class="submit" />
 					</div>
 				</form>
@@ -140,5 +140,6 @@ if ($_POST) {
 			</div>
 		</div>
 		<?php include(DIR_CMS_ROOT . 'inc/inc_rodape.php'); ?>
+		<script src="<?php echo DIR_CMS_HTM_ROOT; ?>js/admin.js?versao=1" type="text/javascript"></script>
 	</body>
 </html>

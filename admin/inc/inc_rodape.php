@@ -1,5 +1,4 @@
 <div id="rodape">
-	<script type="text/javascript" src="<?php echo DIR_CMS_HTM_ROOT; ?>ferramentas/hmenu/PieNG.js"></script>
 </div>
 
 
