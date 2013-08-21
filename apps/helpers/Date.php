@@ -68,7 +68,7 @@ class Date
 			$diff->s ? $format[]= '%s segundos ' : '';
 			$format = implode(', ', $format);
 		}
-		echo $diff->format($format); 
+		return  $diff->format($format); 
 	}
 
 }

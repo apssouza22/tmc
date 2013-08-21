@@ -29,10 +29,10 @@ if ($_POST) {
 	$filter->orderBy('dataabertura DESC');
 	$lista = $objeto->getRelatorioIndisponibilidade($filter);
 }
-$mes = array('','Janeiro','Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro','Novembro', 'Dezembro');
+
 $objReader = PHPExcel_IOFactory::createReader('Excel5');
 $objPHPExcel = $objReader->load(DIR_ROOT."docs/templaterelatorio.xls");
-$objPHPExcel->getActiveSheet()->setCellValue('A14', $mes[date('n')].'/'.date('Y'));
+$objPHPExcel->getActiveSheet()->setCellValue('A14', date('m').'/'.date('Y'));
 $baseRow = 11;
 foreach ($lista as $r =>$itemLista) {
 	$row = $baseRow + $r;
@@ -50,6 +50,6 @@ foreach ($lista as $r =>$itemLista) {
 }
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-$objWriter->save(DIR_ROOT.'/relatorios/'.date('Ymd').'RTG.xls');
+$objWriter->save(DIR_ROOT.'/relatorios/'.date('Ymdhi').'RTG.xls');
 
 ?>
