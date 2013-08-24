@@ -157,6 +157,22 @@ $pasta = Authenticate::this_folder_name();
 				
 			<li></li>
 			<?php 
+			$vetor_menu = ModuloCMS::getVetor($pasta, 'manutencao');
+			if($vetor_menu['auth'])
+			{
+				?>
+				<li>Manutenção
+					<ul>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>manutencao/form.php">Inserir</a></li>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>manutencao/listar.php">Listar</a></li>
+					</ul>
+				</li>
+				<?php
+			}
+			?>
+				
+			<li></li>
+			<?php 
 			$vetor_menu = ModuloCMS::getVetor($pasta, 'estudos');
 			if($vetor_menu['auth'])
 			{

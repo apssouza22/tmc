@@ -36,7 +36,7 @@ div.field {
 	font: 13px arial;
 }
 	div.alto {height: 105px !important;}
-	div.fck {width: 740px !important; margin-right: 0; height: 250px !important;}
+	div.fck {width: 925px !important; margin-right: 0; height: 250px !important;}
 	div.baixo {height: 25px !important;}
 	
 	div.third {width: 170px;}
@@ -81,7 +81,7 @@ div.field label span.contador {
 .campo_obr_foco {border-color: #f00;}
 
 div.full {
-	width: 100% !important;
+	width: 100%;
 }
 div.full input, div.full textarea {width: 920px !important; margin-right: 0;}
 div.half {width: 220px;}

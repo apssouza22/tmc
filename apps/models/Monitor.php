@@ -22,19 +22,22 @@ class Monitor extends Model
 
 	public function monitora()
 	{
-		$oEquipamento = new Equipamento();
-		$all = $oEquipamento->getAllAtivos();
-		foreach ($all as $eq){
-			if(!$this->ping($eq->ip)){
-				if(!$this->estaFora($eq->id)){
-					$idChamado = $this->abrirChamado($eq);
-					$this->registrarQueda($eq, $idChamado);
-				}
-			}else{
-				if($this->estaFora($eq->id)){
-					$this->semiFecharChamado($eq);
-					$oQueda = new Queda();
-					$oQueda->fim($eq);
+		$manutencao = new Manutencao();
+		if(!$manutencao->isEmManutencao()){
+			$oEquipamento = new Equipamento();
+			$all = $oEquipamento->getAllAtivos();
+			foreach ($all as $eq){
+				if(!$this->ping($eq->ip)){
+					if(!$this->estaFora($eq->id)){
+						$idChamado = $this->abrirChamado($eq);
+						$this->registrarQueda($eq, $idChamado);
+					}
+				}else{
+					if($this->estaFora($eq->id)){
+						$this->semiFecharChamado($eq);
+						$oQueda = new Queda();
+						$oQueda->fim($eq);
+					}
 				}
 			}
 		}
