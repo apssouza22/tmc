@@ -5,5 +5,6 @@ while (true) {
 	$monitor = new Monitor();
 	$monitor->monitora();
 	sleep(30); //30 segundos
+	exit(0);
 }
 ?>

@@ -132,7 +132,6 @@ $pasta = Authenticate::this_folder_name();
 				<li>Quedas
 					<ul>
 						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>queda/listar.php">Listar todas</a></li>
-						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>queda/relatorio.php">Relatório</a></li>
 					</ul>
 				</li>
 				<?php

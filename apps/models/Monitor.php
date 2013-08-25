@@ -9,6 +9,7 @@ class Monitor extends Model
 {
 
 	const TB_NAME = 'radio';
+
 	private $allEqFora;
 
 	public function ping($ip)
@@ -23,46 +24,44 @@ class Monitor extends Model
 	public function monitora()
 	{
 		$manutencao = new Manutencao();
-		if(!$manutencao->isEmManutencao()){
+		if (!$manutencao->isEmManutencao()) {
 			$oEquipamento = new Equipamento();
 			$all = $oEquipamento->getAllAtivos();
-			foreach ($all as $eq){
-				if(!$this->ping($eq->ip)){
-					if(!$this->estaFora($eq->id)){
-						$idChamado = $this->abrirChamado($eq);
-						$this->registrarQueda($eq, $idChamado);
-					}
-				}else{
-					if($this->estaFora($eq->id)){
-						$this->semiFecharChamado($eq);
-						$oQueda = new Queda();
-						$oQueda->fim($eq);
-					}
-				}
+			foreach ($all as $eq) {
+				$this->verificaStatus($eq->id);
 			}
 		}
 		return true;
 	}
-	
-	public  function estaFora($id){
-		if(!$this->allEqFora){
+
+	private function verificaStatus($epId)
+	{
+		 shell_exec("php ".DIR_ROOT."/bgmonitora.php {$epId} > /dev/null &");
+	}
+
+	public function estaFora($id)
+	{
+		if (!$this->allEqFora) {
 			$oQueda = new Queda();
-			$this->allEqFora= $oQueda->getEquipamentosFora();
+			$this->allEqFora = $oQueda->getEquipamentosFora();
 		}
 		return in_array($id, $this->allEqFora);
 	}
-	
-	private function registrarQueda($eq, $idChamado){
+
+	public function registrarQueda($eq, $idChamado)
+	{
 		$oQueda = new Queda();
 		return $oQueda->inicio($eq, $idChamado);
 	}
-	
-	private function abrirChamado($eq){
+
+	public  function abrirChamado($eq)
+	{
 		$oChamado = new Chamado();
 		return $oChamado->abrirAutomatico($eq);
 	}
-	
-	private function semiFecharChamado($eq){
+
+	public  function semiFecharChamado($eq)
+	{
 		$oChamado = new Chamado();
 		return $oChamado->semiFecharChamado($eq);
 	}

@@ -48,8 +48,11 @@ foreach ($lista as $r =>$itemLista) {
 	                              ->setCellValue('H'.$row, $itemLista->solucao)
 	                              ->setCellValue('I'.$row, $itemLista->observacao);
 }
-
+$filename = date('Ymdhi').'RTG.xls';
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-$objWriter->save(DIR_ROOT.'/relatorios/'.date('Ymd').'RTG.xls');
+$objWriter->save(DIR_ROOT.'/relatorios/'.$filename);
+
+header('location:'. DIR_HTM_ROOT .'relatorios/'.$filename);
+exit();
 
 ?>

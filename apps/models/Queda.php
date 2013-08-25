@@ -52,7 +52,7 @@ class Queda extends Model
 	public function getAllCompleto(Filter $filter, $cliente = null)
 	{
 		$cliente = $cliente ? ' AND cl.id ='.$cliente : '';
-		$oSelect = new Select('cl.empresa, eq.cliente_id, eq.descricao, eq.ip, ch.problema, q.*', __CLASS__);
+		$oSelect = new Select('cl.empresa, eq.cliente_id, eq.descricao, eq.ip, ch.pro_relatado, q.*', __CLASS__);
 		return $oSelect->from(self::TB_NAME . ' q')
 						->innerJoin(Equipamento::TB_NAME . " eq ON eq.id = q.equip_id  ")
 						->innerJoin(Cliente::TB_NAME . " cl ON cl.id = eq.cliente_id ".$cliente )
