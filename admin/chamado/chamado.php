@@ -57,19 +57,38 @@ if ($_POST) {
 						<h3>Dados</h3>
 						<div class="field half">
 							<label><span>Cliente:</span> <strong><em>*</em></strong></label>
-							<select class="obr" name="cliente_id" nomecampo="Cliente">
+							<select class="obr" name="cliente_id" nomecampo="Cliente" onchange="getUnidadesByCliente(this);">
 								<option value=""></option>
 								<?
 								$oCliente = new Cliente();
 								$aClientes = $oCliente->getAll();
 								foreach ($aClientes as $value) {
-									$selected = $objClassePg->getCliente()->id == $value->id ?
+									$selected = $objClassePg->cliente_id == $value->id ?
 											'selected="selected"':'';
 									echo "<option value='{$value->id}' $selected >{$value->empresa}</option>";
 								}
 								?>
 							</select>
 						</div>
+						
+						<div class="field half">
+							<label><span>Unidade:</span> <strong><em>*</em></strong></label>
+							<div id="unidade">
+								<? if(isset($_GET['id'])){ 
+									$cliente = new Cliente($objClassePg->cliente_id);
+									echo "<select name='unidade_id'>";
+									foreach ($cliente->getAllUnidades() as $value) {
+										$selected = $objClassePg->unidade_id == $value->id ?
+											'selected="selected"':'';
+										echo "<option value='{$value->id}' $selected >{$value->nome}</option>";
+									}
+									echo '</select>';
+									?>
+									
+								<? } ?>
+							</div>
+						</div>
+						
 						<div class="field half">
 							<label><span>Técnico:</span> <strong><em>*</em></strong></label>
 							<select class="obr" name="tecnico_id" nomecampo="Técnico">
@@ -159,5 +178,6 @@ if ($_POST) {
 			</div>
 		</div>
 <?php include(DIR_CMS_ROOT . 'inc/inc_rodape.php'); ?>
+		<script src="../js/admin.js"></script>
 	</body>
 </html>

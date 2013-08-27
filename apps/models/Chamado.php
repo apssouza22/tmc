@@ -32,6 +32,7 @@ class Chamado extends Model
 		'tecnico_id' => 0,
 		'prazoentrega' => $prazoentrega,
 		'cliente_id' => $eq->cliente_id,
+		'unidade_id' => $eq->unidade_id,
 		'categoria_id' => 1,
 		'pro_relatado' => 'Indisponibilidade no Link  Eq. '.$eq->descricao.'  IP: '.$eq->ip,
 		));

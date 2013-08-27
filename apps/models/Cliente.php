@@ -57,6 +57,19 @@ class Cliente extends Model
 		return $oUnidade->getAll($filter);
 	}
 
+	public function getUnidadesHtml()
+	{
+		$html = "<select name='unidade_id'>";
+		$this->id = $_POST['idCliente'];
+		foreach ($this->getAllUnidades() as $uni) {
+			$html .="<option value='{$uni->id}'>{$uni->nome}</option>";
+		}
+
+		$html .="</select>";
+
+		return $html;
+	}
+
 	/**
 	 * Retorna somente as filiais, ou seja, não retorna a matriz
 	 */
@@ -71,8 +84,6 @@ class Cliente extends Model
 		$filter->where("id != {$matriz->id} AND cliente_id =" . $this->id);
 		return $oUnidade->getAll($filter);
 	}
-	
-
 
 }
 

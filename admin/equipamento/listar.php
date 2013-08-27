@@ -5,7 +5,7 @@ ContainerDi::getObject('UsuarioCMS')->autentica();
 
 $classePagina  = 'Equipamento';
 $objeto = new $classePagina();
-$lista = $objeto->getAll();
+$lista = $objeto->getLista();
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/html1-transitional.dtd>
@@ -39,6 +39,7 @@ else
 		<tr>
 			<th width="100">&nbsp;</th>
 			<th>Cliente</th>
+			<th>Unidade</th>
 			<th>IP</th>
 			<th>Descrição</th>
 		</tr>
@@ -58,7 +59,8 @@ else
 		?>
 		<tr class="<?=$class_status?>">
 			<td><?php echo $bt_action;?></td>
-			<td class="quando"> <?php echo $itemLista->getCliente()->empresa?></td>
+			<td class="quando"> <?php echo $itemLista->empresa?></td>
+			<td class="quando"> <?php echo $itemLista->nome?></td>
 			<td>
 				<?php echo $itemLista->ip;?>
 			</td>
