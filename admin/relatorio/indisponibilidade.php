@@ -112,7 +112,7 @@ if ($_POST) {
 										<?php echo helpers\Date::intervalDiff($itemLista->dataabertura, $itemLista->datafechamento ?: 'now' );?>
 									</td>
 									<td>
-										<?= nl2br($itemLista->descricao) ?>
+										<?= nl2br($itemLista->nome) ?>
 									</td>
 									<td>
 										<?= nl2br($itemLista->pro_relatado) ?>

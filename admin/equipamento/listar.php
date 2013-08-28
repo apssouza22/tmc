@@ -60,7 +60,7 @@ else
 		<tr class="<?=$class_status?>">
 			<td><?php echo $bt_action;?></td>
 			<td class="quando"> <?php echo $itemLista->empresa?></td>
-			<td class="quando"> <?php echo $itemLista->nome?></td>
+			<td class="quando"> <?php echo $itemLista->nome ?: 'Repetidora'?></td>
 			<td>
 				<?php echo $itemLista->ip;?>
 			</td>

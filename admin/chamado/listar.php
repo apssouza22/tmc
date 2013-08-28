@@ -73,16 +73,20 @@ else
 		
 		$class_status = '';
 		if($itemLista->status ==1){
+			// fica amarelo quando faltar 1 dia para o fim do prazo de solução 
 			if(time() + 3600  > strtotime($itemLista->prazoentrega)){
 				$class_status = 'yellow';
+				$statusMsg = 'Prazo para resolução expira em menos de 24 horas .';
 			}
-
+			
+			//fica vermelho quando tiver passado o prazo de resolução			
 			if(time() > strtotime($itemLista->prazoentrega)){
+				$statusMsg = 'Prazo para resolução expirado.';
 				$class_status = 'red';
 			}
 		}
 		?>
-		<tr class="<?=$class_status?>" >
+		<tr class="<?=$class_status?>" title="<?=$statusMsg?>" >
 			<td><?php echo $bt_action;?></td>
 			<td class="quando"><em><?php echo $itemLista->dataabertura;?></em> <?php echo date('d/m/Y H:i:s', strtotime($itemLista->dataabertura));?></td>
 			<td class="quando"><?php echo date('d/m/Y H:i:s', strtotime($itemLista->prazoentrega));?></td>

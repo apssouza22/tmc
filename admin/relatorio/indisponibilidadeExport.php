@@ -42,7 +42,7 @@ foreach ($lista as $r =>$itemLista) {
 	                              ->setCellValue('B'.$row, date('d/m/Y H:i:s', strtotime($itemLista->dataabertura)))
 	                              ->setCellValue('C'.$row, $itemLista->datafechamento ? date('d/m/Y H:i:s', strtotime($itemLista->datafechamento)) : 'Ainda fora')
 	                              ->setCellValue('D'.$row, helpers\Date::intervalDiff($itemLista->dataabertura, $itemLista->datafechamento ? : 'now' ))
-	                              ->setCellValue('E'.$row, $itemLista->descricao)
+	                              ->setCellValue('E'.$row, $itemLista->nome)
 	                              ->setCellValue('F'.$row, $itemLista->pro_relatado)
 	                              ->setCellValue('G'.$row, $itemLista->pro_encontrado)
 	                              ->setCellValue('H'.$row, $itemLista->solucao)

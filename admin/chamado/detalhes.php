@@ -13,6 +13,7 @@ if (!$objClassePg->id) {
 	exit;
 }
 $cliente = $objClassePg->getCliente();
+$unidade = $objClassePg->getUnidade();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/html1-transitional.dtd>
 <html>
@@ -43,6 +44,11 @@ $cliente = $objClassePg->getCliente();
 					<div class="field ">
 						<label><span>Empresa:</span></label>
 						<?php echo $cliente->empresa; ?>
+					</div>
+
+					<div class="field ">
+						<label><span>Unidade:</span></label>
+						<?php echo $unidade->nome; ?>
 					</div>
 
 					<div class="field half">

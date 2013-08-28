@@ -29,7 +29,7 @@ class Equipamento extends Model
 	public function getLista(){
 		$oSelect = new Select('cl.empresa, uc.nome, eq.*', __CLASS__);
 		return $oSelect->from(Equipamento::TB_NAME.' eq')
-						->innerJoin(ClienteUnidade::TB_NAME . " uc ON uc.id = eq.unidade_id  ")
+						->leftJoin(ClienteUnidade::TB_NAME . " uc ON uc.id = eq.unidade_id  ")
 						->innerJoin(Cliente::TB_NAME . " cl ON cl.id = eq.cliente_id ")
 						->fetchAllObject();
 	}

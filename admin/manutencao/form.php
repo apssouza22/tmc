@@ -75,12 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						
 						<div class="field  half">
 							<label><span>Início:</span></label>
-							<input type="text" class="datetimepicker " value="<?= date('d/m/Y H:i',strtotime($objClassePg->inicio))?>" name="inicio"></input>
+							<input type="text" class="datetimepicker " value="<?=$objClassePg->inicio? date('d/m/Y H:i',strtotime($objClassePg->inicio)) : ''?>" name="inicio"></input>
 						</div>
 						
 						<div class="field half">
 							<label><span>Fim:</span></label>
-							<input type="text" value="<?= date('d/m/Y H:i',strtotime($objClassePg->fim))?>" class="datetimepicker " name="fim"></input>
+							<input type="text" value="<?= $objClassePg->fim ? date('d/m/Y H:i',strtotime($objClassePg->fim)) : ''?>" class="datetimepicker " name="fim"></input>
 						</div>
 						
 					</div>

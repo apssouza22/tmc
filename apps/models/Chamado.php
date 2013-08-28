@@ -88,6 +88,10 @@ class Chamado extends Model
 	{
 		return new Cliente($this->cliente_id);
 	}
+	public function getUnidade()
+	{
+		return new ClienteUnidade($this->unidade_id);
+	}
 
 	public function getTecnico()
 	{
