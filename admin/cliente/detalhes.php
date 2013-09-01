@@ -65,6 +65,7 @@ $aFilial = $objClassePg->getFiliais();
 				<? if ($oMatriz) { ?>
 					<div class="caixa">
 						<h3>Matriz</h3>
+						
 						<div class="field ">
 							<label><span>Unidade:</span></label>
 							<?php echo $oMatriz->nome?>
@@ -133,7 +134,7 @@ $aFilial = $objClassePg->getFiliais();
 					foreach ($aFilial as $filial) {
 						?>
 						<div class="caixa">
-							<h3>Dados da unidade</h3>
+							<h3>Dados da unidade  <a class="ajax-delete-unidade" data-id="<?php echo $filial->id; ?>" onclick="deletarUnidade(this); return false;">deletar unidade</a></h3>
 
 							<div class="field ">
 								<label><span>Unidade:</span></label>
@@ -197,5 +198,6 @@ $aFilial = $objClassePg->getFiliais();
 			</div>
 		</div>
 		<?php include(DIR_CMS_ROOT . 'inc/inc_rodape.php'); ?>
+		<script src="../js/admin.js"></script>
 	</body>
 </html>

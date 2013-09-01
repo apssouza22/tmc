@@ -28,17 +28,35 @@ function exportarRelatorioIndisponibilidade() {
 function getUnidadesByCliente(self) {
 	var cliente = $(self).val();
 	if (cliente != '') {
-		$.ajax({type: "POST",
-			datatype: 'html',
-			url: '../../ajax.php',
-			data: {
+		ajax({
 				idCliente: cliente,
 				classe: 'Cliente',
 				method: 'getUnidadesHtml'
-			},
-			success: function(r) {
+			}, function(r) {
 				$('#unidade').html(r)
-			}
-		});
+			});
 	}
+}
+
+function deletarUnidade(self){
+	
+	if(window.confirm('Deseja realmente deletar esta unidade')){
+		var idUnidade = $(self).data('id');
+		ajax({
+				id: idUnidade,
+				classe: 'ClienteUnidade',
+				method: 'delete2'
+			}, function(){
+				$(self).parents('.unidade').remove();
+				$(self).parents('.caixa').remove();
+			});
+	}
+}
+
+function ajax(postData, callback){
+	$.ajax({type: "POST",
+			url: '../../ajax.php',
+			data: postData,
+			success: callback
+		});
 }

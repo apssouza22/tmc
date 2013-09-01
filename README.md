@@ -12,4 +12,7 @@ só vai trazer resultado que tenha queda e equipamento relacionado ao chamado
 
 
 ## Questões
-Definir mensagens automatica quando voltar o equipamento
+* Definir mensagens automatica quando voltar o equipamento
+* Como vai ser a questão dos técnicos 
+* Como vai ser a questão dos alarmes? como vai ser avisado? como vai avisar o técnico?
+* vai ter  relatório de repetidora? como vai ser?

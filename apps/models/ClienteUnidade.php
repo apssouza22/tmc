@@ -38,6 +38,10 @@ class ClienteUnidade extends Model
 	{
 		return new Parceiro($this->parceiro_id);
 	}
+	
+	public function delete2(){
+		return parent::delete($_POST['id']);
+	}
 
 }
 

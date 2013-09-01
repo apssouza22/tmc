@@ -320,7 +320,7 @@ $estados = array('AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG
 
 		<div class="modelo unidade" style="display: none;">
 			<div class="caixa " >
-				<h3>Dados</h3>
+				<h3>Dados <a class="ajax-delete-unidade"  onclick="deletarUnidade(this); return false;">deletar unidade</a></h3>
 
 				<div class="field">
 					<label><span>Nome da unidade:</span> <strong><em>*</em></strong></label>
