@@ -100,6 +100,8 @@ $pasta = Authenticate::this_folder_name();
 					<ul>
 						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>repetidora/form.php">Inserir</a></li>
 						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>repetidora/listar.php">Listar</a></li>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>repetidora/preventiva-form.php">Nova preventiva</a></li>
+						<li><a href="<?php echo DIR_CMS_HTM_ROOT; ?>repetidora/preventiva-listar.php">Listar preventivas</a></li>
 					</ul>
 				</li>
 				<?php
