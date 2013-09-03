@@ -51,8 +51,12 @@ else
 	foreach ($lista as $itemLista)
 	{
 		$bt_action = require '../inc/inc_botoes_edicao.php';
+		$cssBg = '';
+		if($itemLista->hasPreventivaAtrasada()){
+			$cssBg = 'background:red;'	;
+		}
 		?>
-		<tr>
+		<tr style="<?=$cssBg?>">
 			<td><?php echo $bt_action;?></td>
 			<td ><?php echo $itemLista->nome;?></td>
 			<td ><?php echo $itemLista->nome_zelador;?></td>

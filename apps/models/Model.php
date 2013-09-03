@@ -106,7 +106,7 @@ abstract class Model
 		if ($filter) {
 			$select->setFilter($filter);
 		}
-
+//echo $select->getQuery();
 		$result = $select->fetchOne();
 		return $result['total'];
 	}

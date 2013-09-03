@@ -18,6 +18,23 @@ class Repetidora extends Model
 		return new Equipamento($this->equipamento_id);
 		//var_dump($equip)
 	}
+	
+	public function getUltimaPreventiva(){
+		$preventiva = new Preventiva();
+		if($oPrev = $preventiva->hasPreventivaAtrasada($this->id)){
+			return $oPrev;
+		}
+		return false;
+	}
+	
+	public function hasPreventivaAtrasada(){
+		$prev = new Preventiva();
+		$aRepId = $prev->getRepetidoraComPreventivaFeita();
+		if(in_array($this->id, $aRepId)){
+			return $prev->hasPreventivaAtrasada($this->id);
+		}
+		return false;
+	}
 }
 
 ?>
