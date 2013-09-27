@@ -89,7 +89,7 @@ else
 		}
 		if($itemLista->status ==2){
 			$class_status = 'LightSkyBlue1';
-			$statusMsg =  'Informe o problema e feche o chamado';  
+			$statusMsg =  'Informe o problema e feche o chamado';
 		}
 		
 		?>
