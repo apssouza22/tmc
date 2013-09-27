@@ -124,12 +124,8 @@ class DB
 		if (is_scalar($value)) {
 			if (is_string($value) && (!empty($value))) {
 				$this->valueColumns[$column] = self::$utf8Convert ? utf8_decode($value) : $value;
-			} else if (is_bool($value)) {
-				$this->valueColumns[$column] = $value ? 'TRUE' : 'FALSE';
-			} else if ($value !== '') {
-				$this->valueColumns[$column] = self::$utf8Convert ? utf8_decode($value) : $value;
 			} else {
-				$this->valueColumns[$column] = 'NULL';
+				$this->valueColumns[$column] = $value ;
 			}
 		}
 	}

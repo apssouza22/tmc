@@ -47,15 +47,19 @@ if ($_POST) {
 	$id  = empty($_POST['id']) ? $id : $_POST['id'];
 	
 	$chamado->update(array(
-		'observacao'=> 'Realizar estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
+		'pro_relatado'=> 'Realizar estudo de viabilidade, mais informação <a href="'.DIR_CMS_HTM_ROOT.'estudo/detalhes.php?id='.$id.'">aqui</a>'
 		), $idchamado);
 	
 	header('Location: ' . constant("{$classePagina}::PG_DETALHE") . '?id=' . $id);
 	exit;
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" http://www.w3.org/TR/xhtml1/DTD/html1-transitional.dtd>
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="pt" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="pt" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="pt" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="pt" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="pt" class="no-js"> <!--<![endif]-->
 	<head>
 		<?php include(DIR_CMS_ROOT . 'inc/inc_header.php'); ?>
 		<?php include(DIR_CMS_ROOT . 'js/FCKeditor/fckeditor.php'); ?>

@@ -42,6 +42,7 @@ else
 			<th>Data</th>
 			<th>Descricao</th>
 			<th>Inicío</th>
+			<th>Fim</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -58,6 +59,9 @@ else
 			</td>	
 			<td>
 				<?php echo date('d/m/Y H:i', strtotime($itemLista->inicio));?>
+			</td>	
+			<td>
+				<?php echo date('d/m/Y H:i', strtotime($itemLista->fim));?>
 			</td>	
 		</tr>
 		<?php 

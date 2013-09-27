@@ -215,7 +215,7 @@ function configValidate(form){
 				});
 
 				var erro = $(error[0]).text();
-				var campo = $('label[for=' + $(element).attr('id') + '] span:first').text();
+				var campo = $(element).siblings('label').find('span').text();
 				 msg += erro.replace('#campo#', "<strong>"+campo+"</strong>");
 				alerta(msg);
 			    }
